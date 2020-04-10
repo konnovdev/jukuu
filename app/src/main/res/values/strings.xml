@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">jukuu</string>
+
+    <string name="notification_channel_name">notification channel</string>
+</resources>
