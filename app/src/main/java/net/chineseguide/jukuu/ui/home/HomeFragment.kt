@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,11 +39,22 @@ class HomeFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         binding.taskList.layoutManager = layoutManager
 
-        val dividerItemDecoration = DividerItemDecoration(requireContext(), layoutManager.orientation)
+        val dividerItemDecoration =
+            DividerItemDecoration(requireContext(), layoutManager.orientation)
         binding.taskList.addItemDecoration(dividerItemDecoration)
 
         binding.taskList.setHasFixedSize(true)
         binding.taskList.adapter = adapter
+
+        binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
+            var actionHandled = false
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                viewModel.search(binding.searchBar.text.toString())
+                actionHandled = true
+            }
+
+            return@setOnEditorActionListener actionHandled
+        }
     }
 
     private fun onResultClicked(result: Result) {
