@@ -3,6 +3,8 @@ object Versions {
     const val kotlin = "1.3.61"
     const val toothpick = "3.1.0"
 
+    const val jsoup = "1.13.1"
+
     const val appCompat = "1.1.0"
     const val material = "1.1.0"
     const val constraintLayout = "1.1.3"
@@ -23,6 +25,8 @@ object Libraries {
 
     const val toothpickCore = "com.github.stephanenicolas.toothpick:toothpick-runtime:${Versions.toothpick}"
     const val toothpickCompiler = "com.github.stephanenicolas.toothpick:toothpick-compiler:${Versions.toothpick}"
+
+    const val jsoup = "org.jsoup:jsoup:${Versions.jsoup}"
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"

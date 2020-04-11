@@ -6,6 +6,5 @@ import java.util.*
 data class Result(
     val id: String,
     val title: String,
-    val details: String,
-    val notificationTime: Calendar?
+    val details: String
 ) : Serializable

@@ -23,6 +23,8 @@ dependencies {
     implementation(Libraries.toothpickCore)
     kapt(Libraries.toothpickCompiler)
 
+    implementation(Libraries.jsoup)
+
     implementation(Libraries.appCompat)
     implementation(Libraries.material)
     implementation(Libraries.constraintLayout)

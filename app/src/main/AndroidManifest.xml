@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="net.chineseguide.jukuu">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="net.chineseguide.jukuu.ui.App"
         android:allowBackup="true"

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import net.chineseguide.jukuu.databinding.FragmentHomeBinding
@@ -47,8 +46,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun onResultClicked(result: Result) {
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(result.id)
-        Navigation.findNavController(requireView()).navigate(action)
+//        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(result.id)
+//        Navigation.findNavController(requireView()).navigate(action)
     }
 
     private fun observeView() {
@@ -57,10 +56,10 @@ class HomeFragment : Fragment() {
 
     private fun renderState(state: HomeState) {
         when (state) {
-            is HomeState.EmptyTaskList -> {
+            is HomeState.EmptyResult -> {
 
             }
-            is HomeState.TaskList -> {
+            is HomeState.Success -> {
                 adapter.itemList = state.resultList
                 adapter.notifyDataSetChanged()
             }

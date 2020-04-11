@@ -3,12 +3,10 @@ package net.chineseguide.jukuu.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import net.chineseguide.jukuu.domain.usecase.GetResultByIdUseCase
 import javax.inject.Inject
 
 class DetailsViewModel @Inject constructor(
-    private val resultId: String,
-    private val getResultByIdUseCase: GetResultByIdUseCase
+    private val resultId: String
 ) : ViewModel() {
 
     private val _title = MutableLiveData<String>()
@@ -18,8 +16,6 @@ class DetailsViewModel @Inject constructor(
     val details: LiveData<String> = _details
 
     init {
-        val task = getResultByIdUseCase(resultId)
-        _title.value = task.title
-        _details.value = task.details
+
     }
 }

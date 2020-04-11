@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class GetResultListUseCase @Inject constructor(private val resultRepository: ResultRepository) {
 
-    operator fun invoke(): List<Result> =
-        resultRepository.getList()
+    operator fun invoke(query: String): List<Result> =
+        resultRepository.getList(query)
 }

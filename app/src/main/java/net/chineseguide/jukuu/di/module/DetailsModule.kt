@@ -6,7 +6,7 @@ import toothpick.config.Module
 
 class DetailsModule(args: Bundle) : Module() {
     init {
-        val taskId = DetailsFragmentArgs.fromBundle(args).resultId
-        bind(String::class.java).toInstance(taskId)
+        val resultId = DetailsFragmentArgs.fromBundle(args).resultId
+        bind(String::class.java).toInstance(resultId)
     }
 }

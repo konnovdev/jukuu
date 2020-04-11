@@ -4,7 +4,13 @@ import net.chineseguide.jukuu.domain.entity.Result
 
 sealed class HomeState {
 
-    object EmptyTaskList : HomeState()
+    object Progress : HomeState()
 
-    class TaskList(val resultList: List<Result>) : HomeState()
+    class Success(val resultList: List<Result>) : HomeState()
+
+    object EmptyResult : HomeState()
+
+    object ServiceUnavailable : HomeState()
+
+    object ParcingException : HomeState()
 }
