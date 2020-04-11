@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.ItemResultBinding
 import net.chineseguide.jukuu.databinding.ItemResultBinding.bind
-import net.chineseguide.jukuu.domain.entity.Result
+import net.chineseguide.jukuu.domain.entity.Sentence
 
-class ResultAdapter(private val onItemClick: (Result) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
+class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
 
-    var itemList: List<Result> = ArrayList()
+    var itemList: List<Sentence> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,11 +27,12 @@ class ResultAdapter(private val onItemClick: (Result) -> Unit) : RecyclerView.Ad
     }
 }
 
-class ViewHolder(itemView: View, private val onItemClick: (Result) -> Unit) : RecyclerView.ViewHolder(itemView) {
+class ViewHolder(itemView: View, private val onItemClick: (Sentence) -> Unit) : RecyclerView.ViewHolder(itemView) {
     private val binding: ItemResultBinding = bind(itemView)
 
-    fun bind(item: Result) {
-        binding.title.text = item.title
+    fun bind(item: Sentence) {
+        binding.originalSentence.text = item.originalSentence
+        binding.translatedSentence.text = item.translatedSentence
         binding.itemRoot.setOnClickListener { onItemClick(item) }
     }
 }

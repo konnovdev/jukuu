@@ -4,18 +4,22 @@ import androidx.core.net.toUri
 import net.chineseguide.jukuu.data.converter.JukuuHtmlConverter
 import net.chineseguide.jukuu.data.converter.UrlConverter
 import net.chineseguide.jukuu.data.datasource.ResultRemoteDataSource
-import net.chineseguide.jukuu.domain.entity.Result
-import net.chineseguide.jukuu.domain.repository.ResultRepository
+import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import javax.inject.Inject
 
-class ResultRepositoryImpl @Inject constructor(
+interface SentenceRepository {
+
+    fun get(query: String): SentenceCollection
+}
+
+class SentenceRepositoryImpl @Inject constructor(
     private val remoteDataSource: ResultRemoteDataSource,
     private val urlConverter: UrlConverter,
     private val jukuuHtmlConverter: JukuuHtmlConverter
-) : ResultRepository {
+) : SentenceRepository {
 
-    override fun getList(query: String): List<Result> =
-        urlConverter.convert("www.jukuu.com/search.php?q=${query.toUri()}")
-            .let(remoteDataSource::get)
+    override fun get(query: String): SentenceCollection =
+        urlConverter.convert("${query.toUri()}")
+            .let { remoteDataSource.get("http://www.jukuu.com/search.php?q=$it") }
             .let(jukuuHtmlConverter::convert)
 }

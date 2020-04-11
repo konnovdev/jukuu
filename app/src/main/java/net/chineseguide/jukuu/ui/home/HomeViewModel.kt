@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import net.chineseguide.jukuu.domain.usecase.GetResultListUseCase
+import kotlinx.coroutines.withContext
+import net.chineseguide.jukuu.domain.usecase.GetSentenceCollectionUseCase
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(private val getResultListUseCase: GetResultListUseCase) : ViewModel() {
+class HomeViewModel @Inject constructor(private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase) : ViewModel() {
 
     private val _state = MutableLiveData<HomeState>()
     val state: LiveData<HomeState> = _state
@@ -17,8 +19,10 @@ class HomeViewModel @Inject constructor(private val getResultListUseCase: GetRes
     fun search(query: String) {
         _state.value = HomeState.Progress
         CoroutineScope(IO).launch {
-            val result = getResultListUseCase(query)
-            println("result epta $result")
+            val result = getSentenceCollectionUseCase(query)
+            withContext(Main) {
+                _state.value = HomeState.Success(result)
+            }
         }
     }
 }

@@ -3,8 +3,8 @@ package net.chineseguide.jukuu.domain.entity
 import java.io.Serializable
 import java.util.*
 
-data class Result(
+data class Sentence(
     val id: String,
-    val title: String,
-    val details: String
+    val originalSentence: String,
+    val translatedSentence: String
 ) : Serializable

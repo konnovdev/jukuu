@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import net.chineseguide.jukuu.databinding.FragmentHomeBinding
 import net.chineseguide.jukuu.di.viewModel
-import net.chineseguide.jukuu.domain.entity.Result
+import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.ui.observeSafe
+import java.lang.IllegalArgumentException
 
 class HomeFragment : Fragment() {
 
@@ -19,7 +21,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-    private lateinit var adapter: ResultAdapter
+    private lateinit var adapter: SentencesAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomeBinding.inflate(inflater)
@@ -34,7 +36,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
-        adapter = ResultAdapter(::onResultClicked)
+        adapter = SentencesAdapter(::onResultClicked)
 
         val layoutManager = LinearLayoutManager(requireContext())
         binding.taskList.layoutManager = layoutManager
@@ -46,18 +48,13 @@ class HomeFragment : Fragment() {
         binding.taskList.setHasFixedSize(true)
         binding.taskList.adapter = adapter
 
-        binding.searchBar.setOnEditorActionListener { _, actionId, _ ->
-            var actionHandled = false
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                viewModel.search(binding.searchBar.text.toString())
-                actionHandled = true
-            }
-
-            return@setOnEditorActionListener actionHandled
+        binding.searchButton.setOnClickListener {
+            viewModel.search(binding.searchBar.text.toString())
         }
     }
 
-    private fun onResultClicked(result: Result) {
+    //TODO handle it later
+    private fun onResultClicked(sentence: Sentence) {
 //        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(result.id)
 //        Navigation.findNavController(requireView()).navigate(action)
     }
@@ -68,13 +65,15 @@ class HomeFragment : Fragment() {
 
     private fun renderState(state: HomeState) {
         when (state) {
-            is HomeState.EmptyResult -> {
-
+            is HomeState.Progress -> {
+                binding.progressBar.isVisible = true
             }
             is HomeState.Success -> {
-                adapter.itemList = state.resultList
+                binding.progressBar.isVisible = false
+                adapter.itemList = state.sentenceCollection.sentences
                 adapter.notifyDataSetChanged()
             }
+            else -> throw IllegalArgumentException("unhandled state $state")
         }
     }
 }
