@@ -15,6 +15,9 @@ android {
         versionName = Application.versionName
     }
     viewBinding.isEnabled = true
+    lintOptions {
+        lintConfig = file("lint.xml")
+    }
 }
 
 dependencies {
