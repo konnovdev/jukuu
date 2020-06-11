@@ -59,10 +59,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    //TODO handle it later
     private fun onResultClicked(sentence: Sentence) {
-//        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(result.id)
-//        Navigation.findNavController(requireView()).navigate(action)
+        //TODO fire some event when user clicks on the item
     }
 
     private fun observeView() {
