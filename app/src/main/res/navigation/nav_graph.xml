@@ -11,22 +11,6 @@
         android:label="Home"
         tools:layout="@layout/fragment_home">
 
-        <action
-            android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="net.chineseguide.jukuu.ui.detail.DetailsFragment"
-        android:label="DetailsFragment"
-        tools:layout="@layout/fragment_details">
-
-        <argument
-            android:name="resultId"
-            app:argType="string" />
-
     </fragment>
 
 </navigation>
