@@ -10,7 +10,5 @@ sealed class HomeState {
 
     object EmptyResult : HomeState()
 
-    object ServiceUnavailable : HomeState()
-
-    object ParcingException : HomeState()
+    class Error(val exception: Throwable) : HomeState()
 }

@@ -11,7 +11,8 @@ import kotlinx.coroutines.withContext
 import net.chineseguide.jukuu.domain.usecase.GetSentenceCollectionUseCase
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase) : ViewModel() {
+class HomeViewModel @Inject constructor(private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase) :
+    ViewModel() {
 
     private val _state = MutableLiveData<HomeState>()
     val state: LiveData<HomeState> = _state
@@ -19,10 +20,22 @@ class HomeViewModel @Inject constructor(private val getSentenceCollectionUseCase
     fun search(query: String) {
         _state.value = HomeState.Progress
         CoroutineScope(IO).launch {
-            val result = getSentenceCollectionUseCase(query)
-            withContext(Main) {
-                _state.value = HomeState.Success(result)
-            }
+            runCatching { getSentenceCollectionUseCase(query) }
+                .onSuccess { result ->
+                    withContext(Main) {
+                        if (result.sentences.isEmpty()) {
+                            _state.value = HomeState.EmptyResult
+                        } else {
+                            _state.value = HomeState.Success(result)
+                        }
+                    }
+                }
+                .onFailure { throwable ->
+                    withContext(Main) {
+                        _state.value = HomeState.Error(throwable)
+                    }
+                }
+
         }
     }
 }
