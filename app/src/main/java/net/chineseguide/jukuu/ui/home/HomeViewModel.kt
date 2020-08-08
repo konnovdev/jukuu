@@ -11,8 +11,9 @@ import kotlinx.coroutines.withContext
 import net.chineseguide.jukuu.domain.usecase.GetSentenceCollectionUseCase
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase) :
-    ViewModel() {
+class HomeViewModel @Inject constructor(
+    private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase
+) : ViewModel() {
 
     private val _state = MutableLiveData<HomeState>()
     val state: LiveData<HomeState> = _state
