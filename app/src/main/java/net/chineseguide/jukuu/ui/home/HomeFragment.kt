@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,7 +14,6 @@ import net.chineseguide.jukuu.databinding.FragmentHomeBinding
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.ui.observeSafe
-import java.lang.IllegalArgumentException
 
 class HomeFragment : Fragment() {
 
@@ -42,7 +40,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
-        adapter = SentencesAdapter(::onResultClicked)
+        adapter = SentencesAdapter(::onSentenceClicked)
 
         val layoutManager = LinearLayoutManager(requireContext())
         binding.taskList.layoutManager = layoutManager
@@ -59,7 +57,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun onResultClicked(sentence: Sentence) {
+    private fun onSentenceClicked(sentence: Sentence) {
         //TODO fire some event when user clicks on the item
     }
 
