@@ -3,7 +3,6 @@ package net.chineseguide.jukuu.data.converter
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import org.jsoup.nodes.Document
-import org.jsoup.select.Elements
 import java.util.*
 import javax.inject.Inject
 

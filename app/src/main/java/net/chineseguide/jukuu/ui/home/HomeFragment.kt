@@ -99,7 +99,6 @@ class HomeFragment : Fragment() {
         binding.searchButton.isEnabled = true
         binding.searchBar.isEnabled = true
         binding.progressBar.isVisible = false
-        adapter.itemList = sentences
-        adapter.notifyDataSetChanged()
+        adapter.setItemList(sentences)
     }
 }

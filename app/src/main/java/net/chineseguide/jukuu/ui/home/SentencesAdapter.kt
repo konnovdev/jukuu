@@ -11,7 +11,13 @@ import net.chineseguide.jukuu.domain.entity.Sentence
 
 class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
 
-    var itemList: List<Sentence> = ArrayList()
+    private val itemList = mutableListOf<Sentence>()
+
+    fun setItemList(sentences: List<Sentence>) {
+        itemList.clear()
+        itemList.addAll(sentences)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
