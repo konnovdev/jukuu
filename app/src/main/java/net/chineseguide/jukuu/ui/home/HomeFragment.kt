@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import net.chineseguide.jukuu.databinding.FragmentHomeBinding
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
+import net.chineseguide.jukuu.ui.home.sentence.dialog.SentenceDialogFragment
 import net.chineseguide.jukuu.ui.observeSafe
 
 class HomeFragment : Fragment() {
@@ -58,7 +59,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun onSentenceClicked(sentence: Sentence) {
-        //TODO fire some event when user clicks on the item
+        val sentenceDialogFragment = SentenceDialogFragment.newInstance(sentence)
+        sentenceDialogFragment.show(parentFragmentManager.beginTransaction(), "tag")
     }
 
     private fun observeView() {

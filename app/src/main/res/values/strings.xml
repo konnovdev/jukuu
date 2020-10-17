@@ -4,4 +4,8 @@
     <string name="notification_channel_name">notification channel</string>
     <string name="search">Search</string>
     <string name="search_query">Query</string>
+    <string name="sentence_what_to_do">What do you want to do with the sentence?</string>
+    <string name="copy_original_text">Copy original text</string>
+    <string name="copy_translated_text">Copy translated text</string>
+    <string name="copy_both">Copy both</string>
 </resources>
