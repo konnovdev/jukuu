@@ -3,4 +3,5 @@
 
     <string name="notification_channel_name">notification channel</string>
     <string name="search">Search</string>
+    <string name="search_query">Query</string>
 </resources>
