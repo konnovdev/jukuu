@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -53,9 +54,19 @@ class HomeFragment : Fragment() {
         binding.taskList.setHasFixedSize(true)
         binding.taskList.adapter = adapter
 
-        binding.searchButton.setOnClickListener {
-            viewModel.search(binding.searchBar.text.toString())
+        binding.searchBar.setOnClickListener {
+            (it as SearchView).onActionViewExpanded()
         }
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(s: String): Boolean {
+                return true
+            }
+
+            override fun onQueryTextSubmit(s: String): Boolean {
+                viewModel.search(binding.searchBar.query.toString())
+                return true
+            }
+        })
     }
 
     private fun onSentenceClicked(sentence: Sentence) {
@@ -92,13 +103,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun showInProgress() {
-        binding.searchButton.isEnabled = false
         binding.searchBar.isEnabled = false
         binding.progressBar.isVisible = true
     }
 
     private fun showContent(sentences: List<Sentence>) {
-        binding.searchButton.isEnabled = true
         binding.searchBar.isEnabled = true
         binding.progressBar.isVisible = false
         adapter.setItemList(sentences)
