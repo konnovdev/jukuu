@@ -15,6 +15,7 @@ import net.chineseguide.jukuu.di.module.SentenceDialogModule
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.ui.bundleOf
+import net.chineseguide.jukuu.ui.observeSafe
 import toothpick.Toothpick
 
 
@@ -61,12 +62,13 @@ class SentenceDialogFragment() : DialogFragment() {
             viewModel.copyBoth()
         }
 
-        viewModel.clipboardText.observeForever { text ->
+        viewModel.clipboardText.observeSafe(viewLifecycleOwner) { text ->
             val clipboardManager =
                 requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = ClipData.newPlainText("textToCopy", text)
             clipboardManager.primaryClip = clipData
-            Toast.makeText(requireActivity(), "Text copied to clipboard", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireActivity(), "Text copied to clipboard", Toast.LENGTH_LONG)
+                .show()
             dismiss()
         }
     }

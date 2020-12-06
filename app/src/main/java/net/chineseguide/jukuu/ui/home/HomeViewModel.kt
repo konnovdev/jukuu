@@ -3,7 +3,7 @@ package net.chineseguide.jukuu.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -21,7 +21,7 @@ class HomeViewModel @Inject constructor(
 
     fun search(query: String) {
         _state.value = HomeState.Progress
-        CoroutineScope(IO).launch {
+        viewModelScope.launch(context = IO) {
             runCatching { getSentenceCollectionUseCase(query) }
                 .onSuccess { showSuccess(it) }
                 .onFailure { showError(it) }
