@@ -3,10 +3,13 @@ package net.chineseguide.jukuu.ui.home.sentence.dialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import net.chineseguide.jukuu.databinding.DialogFragmentSentenceBinding
@@ -45,6 +48,10 @@ class SentenceDialogFragment() : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DialogFragmentSentenceBinding.inflate(inflater)
+
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE);
+
         return binding.root
     }
 

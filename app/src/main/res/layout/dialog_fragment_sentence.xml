@@ -5,10 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:background="@drawable/dialog_fragment_sentence_background"
+    android:padding="32dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,11 +17,11 @@
         android:textSize="18sp"
         android:text="@string/sentence_what_to_do"
         android:textColor="@android:color/black"
-        android:paddingBottom="8dp"/>
+        android:paddingBottom="16dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_original_text_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/copy_original_text"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -28,7 +29,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_translated_text_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/copy_translated_text"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -36,7 +37,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_both_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/copy_both"
         style="@style/Widget.MaterialComponents.Button.TextButton"
