@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">jukuu</string>
 
+    <string name="perform_search_hint">To perform the search input your query in the search field and hit enter</string>
+    <string name="error_after_search">Error occurred, try again</string>
+    <string name="nothing_was_found">Nothing was found, try a different query!</string>
     <string name="notification_channel_name">notification channel</string>
     <string name="search">Search</string>
     <string name="search_query">Query</string>

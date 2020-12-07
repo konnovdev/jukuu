@@ -16,8 +16,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:importantForAutofill="no"
-            app:defaultQueryHint="@string/search"
             android:textSize="18sp"
+            app:defaultQueryHint="@string/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/emptyContentStub"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:visibility="visible"
+            android:visibility="gone"
+            android:gravity="center"
+            tools:text="Input a search in the search query"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

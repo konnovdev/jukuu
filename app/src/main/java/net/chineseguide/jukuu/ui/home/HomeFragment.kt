@@ -9,8 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
-import com.google.android.material.snackbar.Snackbar
+import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.FragmentHomeBinding
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
@@ -67,6 +66,8 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
+        binding.searchBar.isIconified = false
+        binding.searchBar.requestFocus()
     }
 
     private fun onSentenceClicked(sentence: Sentence) {
@@ -80,6 +81,11 @@ class HomeFragment : Fragment() {
 
     private fun renderState(state: HomeState) {
         when (state) {
+            is HomeState.EmptyNoSearch -> {
+                binding.emptyContentStub.isVisible = true
+                binding.emptyContentStub.setText(R.string.perform_search_hint)
+            }
+
             is HomeState.Progress -> {
                 showInProgress()
             }
@@ -87,23 +93,22 @@ class HomeFragment : Fragment() {
                 showContent(state.sentenceCollection.sentences)
 
             }
-            is HomeState.EmptyResult -> {
+            is HomeState.EmptyResultAfterSearch -> {
                 showContent(emptyList())
-                Snackbar.make(binding.parentLayout, "Nothing was found!", LENGTH_SHORT).show()
+                binding.emptyContentStub.isVisible = true
+                binding.emptyContentStub.setText(R.string.nothing_was_found)
             }
             is HomeState.Error -> {
                 showContent(emptyList())
-                Snackbar.make(
-                    binding.parentLayout,
-                    "Error occurred! " + { state.exception } + ". Please report to konnovdev@gmail.com",
-                    LENGTH_SHORT
-                ).show()
+                binding.emptyContentStub.isVisible = true
+                binding.emptyContentStub.setText(R.string.error_after_search)
             }
         }
     }
 
     private fun showInProgress() {
         binding.searchBar.isEnabled = false
+        binding.emptyContentStub.isVisible = false
         binding.progressBar.isVisible = true
     }
 

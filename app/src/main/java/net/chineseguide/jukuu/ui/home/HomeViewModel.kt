@@ -16,7 +16,7 @@ class HomeViewModel @Inject constructor(
     private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase
 ) : ViewModel() {
 
-    private val _state = MutableLiveData<HomeState>()
+    private val _state = MutableLiveData<HomeState>(HomeState.EmptyNoSearch)
     val state: LiveData<HomeState> = _state
 
     fun search(query: String) {
@@ -31,7 +31,7 @@ class HomeViewModel @Inject constructor(
     private suspend fun showSuccess(sentenceCollection: SentenceCollection) {
         withContext(Main) {
             if (sentenceCollection.sentences.isEmpty()) {
-                _state.value = HomeState.EmptyResult
+                _state.value = HomeState.EmptyResultAfterSearch
             } else {
                 _state.value = HomeState.Success(sentenceCollection)
             }
