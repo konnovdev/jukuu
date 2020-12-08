@@ -15,6 +15,7 @@ import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.ui.home.sentence.dialog.SentenceDialogFragment
 import net.chineseguide.jukuu.ui.observeSafe
+import net.chineseguide.jukuu.ui.setOnQuerySubmittedListener
 
 class HomeFragment : Fragment() {
 
@@ -22,7 +23,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-    private lateinit var adapter: SentencesAdapter
+    private lateinit var sentencesAdapter: SentencesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,47 +36,45 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initView()
-        observeView()
+        initViews()
+        observeState()
     }
 
-    private fun initView() {
-        adapter = SentencesAdapter(::onSentenceClicked)
+    private fun initViews() {
+        setUpAdapter()
+        setUpSearchBar()
+    }
 
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.taskList.layoutManager = layoutManager
+    private fun setUpAdapter() {
+        sentencesAdapter = SentencesAdapter(::openSentenceDialog)
 
+        val linearLayoutManager = LinearLayoutManager(requireContext())
         val dividerItemDecoration =
-            DividerItemDecoration(requireContext(), layoutManager.orientation)
-        binding.taskList.addItemDecoration(dividerItemDecoration)
+            DividerItemDecoration(requireContext(), linearLayoutManager.orientation)
 
-        binding.taskList.setHasFixedSize(true)
-        binding.taskList.adapter = adapter
-
-        binding.searchBar.setOnClickListener {
-            (it as SearchView).onActionViewExpanded()
+        with(binding.sentencesRecyclerView) {
+            layoutManager = linearLayoutManager
+            addItemDecoration(dividerItemDecoration)
+            setHasFixedSize(true)
+            adapter = sentencesAdapter
         }
-        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(s: String): Boolean {
-                return true
-            }
-
-            override fun onQueryTextSubmit(s: String): Boolean {
-                viewModel.search(binding.searchBar.query.toString())
-                return true
-            }
-        })
-        binding.searchBar.isIconified = false
-        binding.searchBar.requestFocus()
     }
 
-    private fun onSentenceClicked(sentence: Sentence) {
+    private fun openSentenceDialog(sentence: Sentence) {
         val sentenceDialogFragment = SentenceDialogFragment.newInstance(sentence)
         sentenceDialogFragment.show(parentFragmentManager.beginTransaction(), "tag")
     }
 
-    private fun observeView() {
+    private fun setUpSearchBar() {
+        with(binding.searchBar) {
+            setOnClickListener { (it as SearchView).onActionViewExpanded() }
+            setOnQuerySubmittedListener(viewModel::search)
+            isIconified = false
+            requestFocus()
+        }
+    }
+
+    private fun observeState() {
         viewModel.state.observeSafe(viewLifecycleOwner, ::renderState)
     }
 
@@ -115,6 +114,6 @@ class HomeFragment : Fragment() {
     private fun showContent(sentences: List<Sentence>) {
         binding.searchBar.isEnabled = true
         binding.progressBar.isVisible = false
-        adapter.setItemList(sentences)
+        sentencesAdapter.setItemList(sentences)
     }
 }

@@ -21,7 +21,6 @@ import net.chineseguide.jukuu.ui.bundleOf
 import net.chineseguide.jukuu.ui.observeSafe
 import toothpick.Toothpick
 
-
 var Bundle.sentence: Sentence
     get() = getSerializable("sentence_arg") as Sentence
     set(value) = putSerializable("sentence_arg", value)
@@ -48,15 +47,20 @@ class SentenceDialogFragment() : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DialogFragmentSentenceBinding.inflate(inflater)
-
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE);
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        allowRoundedCorners()
+        initButtons()
+        observeState()
+    }
 
+    private fun allowRoundedCorners() {
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    private fun initButtons() {
         binding.copyOriginalTextButton.setOnClickListener {
             viewModel.copyOriginalText()
         }
@@ -68,7 +72,9 @@ class SentenceDialogFragment() : DialogFragment() {
         binding.copyBothButton.setOnClickListener {
             viewModel.copyBoth()
         }
+    }
 
+    private fun observeState() {
         viewModel.clipboardText.observeSafe(viewLifecycleOwner) { text ->
             val clipboardManager =
                 requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
