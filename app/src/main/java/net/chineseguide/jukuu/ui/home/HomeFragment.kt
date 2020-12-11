@@ -62,7 +62,8 @@ class HomeFragment : Fragment() {
 
     private fun openSentenceDialog(sentence: Sentence) {
         val sentenceDialogFragment = SentenceDialogFragment.newInstance(sentence)
-        sentenceDialogFragment.show(parentFragmentManager.beginTransaction(), "tag")
+        val tag = SentenceDialogFragment::class::java.get().canonicalName
+        sentenceDialogFragment.show(childFragmentManager, tag)
     }
 
     private fun setUpSearchBar() {
