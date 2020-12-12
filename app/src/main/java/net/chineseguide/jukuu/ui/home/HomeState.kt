@@ -10,6 +10,8 @@ sealed class HomeState {
 
     class Success(val sentenceCollection: SentenceCollection) : HomeState()
 
+    class NextSentencesLoaded(val sentenceCollection: SentenceCollection) : HomeState()
+
     object EmptyResultAfterSearch : HomeState()
 
     class Error(val exception: Throwable) : HomeState()

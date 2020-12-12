@@ -1,5 +1,6 @@
 package net.chineseguide.jukuu.ui.home
 
+import VerticalScrollListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +58,19 @@ class HomeFragment : Fragment() {
             addItemDecoration(dividerItemDecoration)
             setHasFixedSize(true)
             adapter = sentencesAdapter
+            addOnScrollListener(VerticalScrollListener {
+                with(linearLayoutManager) {
+                    val visibleItemCount = childCount
+                    val firstVisibleItemPosition = findFirstVisibleItemPosition()
+                    val totalItemCount = itemCount
+                    val nearTheEndOfTheList =
+                        visibleItemCount + firstVisibleItemPosition >= totalItemCount - 3
+
+                    if (nearTheEndOfTheList) {
+                        viewModel.listScrolled(binding.searchBar.query.toString(), totalItemCount)
+                    }
+                }
+            })
         }
     }
 
@@ -93,6 +107,9 @@ class HomeFragment : Fragment() {
                 showContent(state.sentenceCollection.sentences)
 
             }
+            is HomeState.NextSentencesLoaded -> {
+                showNextSentences(state.sentenceCollection.sentences)
+            }
             is HomeState.EmptyResultAfterSearch -> {
                 showContent(emptyList())
                 binding.emptyContentStub.isVisible = true
@@ -116,5 +133,9 @@ class HomeFragment : Fragment() {
         binding.searchBar.isEnabled = true
         binding.progressBar.isVisible = false
         sentencesAdapter.setItemList(sentences)
+    }
+
+    private fun showNextSentences(sentences: List<Sentence>) {
+        sentencesAdapter.addItems(sentences)
     }
 }
