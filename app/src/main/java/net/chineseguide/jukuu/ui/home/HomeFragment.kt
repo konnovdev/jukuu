@@ -103,7 +103,7 @@ class HomeFragment : Fragment() {
             is HomeState.Progress -> {
                 showInProgress()
             }
-            is HomeState.Success -> {
+            is HomeState.FirstSentencesLoaded -> {
                 showContent(state.sentenceCollection.sentences)
 
             }

@@ -35,22 +35,22 @@ class HomeViewModel @Inject constructor(
         _state.value = HomeState.Progress
         viewModelScope.launch(context = IO) {
             runCatching { getSentenceCollectionUseCase(query) }
-                .onSuccess { showSuccess(it) }
-                .onFailure { showError(it) }
+                .onSuccess { showFirstPageLoads(it) }
+                .onFailure { showQueryError(it) }
         }
     }
 
-    private suspend fun showSuccess(sentenceCollection: SentenceCollection) {
+    private suspend fun showFirstPageLoads(sentenceCollection: SentenceCollection) {
         withContext(Main) {
             if (sentenceCollection.sentences.isEmpty()) {
                 _state.value = HomeState.EmptyResultAfterSearch
             } else {
-                _state.value = HomeState.Success(sentenceCollection)
+                _state.value = HomeState.FirstSentencesLoaded(sentenceCollection)
             }
         }
     }
 
-    private suspend fun showError(error: Throwable) {
+    private suspend fun showQueryError(error: Throwable) {
         withContext(Main) {
             _state.value = HomeState.Error(error)
         }
