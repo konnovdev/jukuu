@@ -10,6 +10,8 @@ import javax.inject.Inject
 interface SentenceRepository {
 
     fun get(query: String): SentenceCollection
+
+    fun get(query: String, page: Int): SentenceCollection
 }
 
 class SentenceRepositoryImpl @Inject constructor(
@@ -21,5 +23,10 @@ class SentenceRepositoryImpl @Inject constructor(
     override fun get(query: String): SentenceCollection =
         urlConverter.convert("${query.toUri()}")
             .let { remoteDataSource.get("http://www.jukuu.com/search.php?q=$it") }
+            .let(jukuuHtmlConverter::convert)
+
+    override fun get(query: String, page: Int): SentenceCollection =
+        urlConverter.convert("${query.toUri()}")
+            .let { remoteDataSource.get("http://www.jukuu.com/show-$it-$page.html") }
             .let(jukuuHtmlConverter::convert)
 }

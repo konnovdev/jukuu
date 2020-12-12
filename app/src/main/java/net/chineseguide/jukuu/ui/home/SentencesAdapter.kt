@@ -9,7 +9,8 @@ import net.chineseguide.jukuu.databinding.ItemResultBinding
 import net.chineseguide.jukuu.databinding.ItemResultBinding.bind
 import net.chineseguide.jukuu.domain.entity.Sentence
 
-class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
+class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) :
+    RecyclerView.Adapter<ViewHolder>() {
 
     private val itemList = mutableListOf<Sentence>()
 
@@ -17,6 +18,12 @@ class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) : RecyclerVi
         itemList.clear()
         itemList.addAll(sentences)
         notifyDataSetChanged()
+    }
+
+    fun addItems(sentences: List<Sentence>) {
+        val lastIndexOfOldList = itemList.lastIndex
+        itemList.addAll(sentences)
+        notifyItemRangeInserted(lastIndexOfOldList + 1, sentences.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,7 +40,8 @@ class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) : RecyclerVi
     }
 }
 
-class ViewHolder(itemView: View, private val onItemClick: (Sentence) -> Unit) : RecyclerView.ViewHolder(itemView) {
+class ViewHolder(itemView: View, private val onItemClick: (Sentence) -> Unit) :
+    RecyclerView.ViewHolder(itemView) {
     private val binding: ItemResultBinding = bind(itemView)
 
     fun bind(item: Sentence) {
