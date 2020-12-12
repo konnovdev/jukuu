@@ -9,9 +9,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.DialogFragmentSentenceBinding
 import net.chineseguide.jukuu.di.Scopes
 import net.chineseguide.jukuu.di.module.SentenceDialogModule
@@ -80,7 +80,7 @@ class SentenceDialogFragment() : DialogFragment() {
                 requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = ClipData.newPlainText("textToCopy", text)
             clipboardManager.primaryClip = clipData
-            Toast.makeText(requireActivity(), "Text copied to clipboard", Toast.LENGTH_LONG)
+            Toast.makeText(requireActivity(), R.string.text_copied_to_clipboard, Toast.LENGTH_LONG)
                 .show()
             dismiss()
         }
