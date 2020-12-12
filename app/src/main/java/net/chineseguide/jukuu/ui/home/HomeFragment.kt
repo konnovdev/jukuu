@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
                     val firstVisibleItemPosition = findFirstVisibleItemPosition()
                     val totalItemCount = itemCount
                     val nearTheEndOfTheList =
-                        visibleItemCount + firstVisibleItemPosition >= totalItemCount - 3
+                        visibleItemCount + firstVisibleItemPosition >= totalItemCount - 4
 
                     if (nearTheEndOfTheList) {
                         viewModel.listScrolled(binding.searchBar.query.toString(), totalItemCount)
