@@ -52,12 +52,17 @@ class SentenceDialogFragment() : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         allowRoundedCorners()
+        attachAnimation()
         initButtons()
         observeState()
     }
 
     private fun allowRoundedCorners() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    private fun attachAnimation() {
+        dialog?.window?.attributes?.windowAnimations = R.style.DialogAnimation
     }
 
     private fun initButtons() {
