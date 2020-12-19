@@ -36,4 +36,6 @@ dependencies {
     implementation(Libraries.fragmentKtx)
     implementation(Libraries.navigationFragment)
     implementation(Libraries.navigationUi)
+
+    testImplementation(TestLibraries.junit)
 }
