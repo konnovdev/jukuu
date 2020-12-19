@@ -12,12 +12,13 @@ object Versions {
     const val fragment = "1.2.2"
     const val lifecycle = "2.2.0"
     const val navigation = "2.3.0-alpha04"
+
+    const val junit = "4.13.1"
 }
 
 object Classpaths {
     const val gradleAndroidPlugin = "com.android.tools.build:gradle:${Versions.gradleAndroidPlugin}"
     const val navigationPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
-
 }
 
 object Libraries {
@@ -36,4 +37,8 @@ object Libraries {
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     const val navigationFragment = "androidx.navigation:navigation-fragment:${Versions.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui:${Versions.navigation}"
+}
+
+object TestLibraries {
+    const val junit = "junit:junit:${Versions.junit}"
 }
