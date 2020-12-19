@@ -13,10 +13,10 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchBar"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/spacing_0"
             android:layout_height="wrap_content"
             android:importantForAutofill="no"
-            android:textSize="18sp"
+            android:textSize="@dimen/font_size_18"
             app:defaultQueryHint="@string/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,16 +24,16 @@
 
         <TextView
             android:id="@+id/emptyContentStub"
-            android:layout_width="0dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="@dimen/spacing_0"
+            android:layout_marginStart="@dimen/spacing_12"
+            android:layout_marginEnd="@dimen/spacing_12"
             android:layout_height="wrap_content"
             tools:visibility="visible"
             android:visibility="gone"
             android:gravity="center"
             tools:text="Input a search in the search query"
             android:textColor="@color/colorAccent"
-            android:textSize="18sp"
+            android:textSize="@dimen/font_size_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sentencesRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/spacing_0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
