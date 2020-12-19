@@ -17,6 +17,9 @@ android {
     viewBinding.isEnabled = true
     lintOptions {
         setLintConfig(file("lint.xml"))
+        isCheckDependencies = true
+        isCheckGeneratedSources = true
+        isWarningsAsErrors = true
     }
 }
 
