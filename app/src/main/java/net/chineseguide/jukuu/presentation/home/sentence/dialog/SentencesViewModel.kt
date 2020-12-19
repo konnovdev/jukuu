@@ -1,4 +1,4 @@
-package net.chineseguide.jukuu.ui.home.sentence.dialog
+package net.chineseguide.jukuu.presentation.home.sentence.dialog
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

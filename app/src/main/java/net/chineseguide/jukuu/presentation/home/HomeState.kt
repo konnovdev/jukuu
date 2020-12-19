@@ -1,4 +1,4 @@
-package net.chineseguide.jukuu.ui.home
+package net.chineseguide.jukuu.presentation.home
 
 import net.chineseguide.jukuu.domain.entity.SentenceCollection
 
