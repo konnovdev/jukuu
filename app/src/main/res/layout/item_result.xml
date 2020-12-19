@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
-    android:padding="@dimen/spacing_24">
+    android:padding="@dimen/spacing_24"
+    tools:ignore="Overdraw">
 
     <TextView
         android:id="@+id/originalSentence"
