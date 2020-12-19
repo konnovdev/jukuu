@@ -25,19 +25,19 @@
         <TextView
             android:id="@+id/emptyContentStub"
             android:layout_width="@dimen/spacing_0"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_12"
             android:layout_marginEnd="@dimen/spacing_12"
-            android:layout_height="wrap_content"
-            tools:visibility="visible"
-            android:visibility="gone"
             android:gravity="center"
-            tools:text="Input a search in the search query"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/font_size_18"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Input a search in the search query"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sentencesRecyclerView"
