@@ -85,7 +85,7 @@ class SentenceDialogFragment() : DialogFragment() {
                 requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = ClipData.newPlainText("textToCopy", text)
             clipboardManager.primaryClip = clipData
-            Toast.makeText(requireActivity(), R.string.text_copied_to_clipboard, Toast.LENGTH_LONG)
+            Toast.makeText(requireActivity(), R.string.sentence_dialog_fragment_text_copied_to_clipboard, Toast.LENGTH_LONG)
                 .show()
             dismiss()
         }

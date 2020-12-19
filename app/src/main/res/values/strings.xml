@@ -1,15 +1,14 @@
 <resources>
     <string name="app_name">Jukuu</string>
 
-    <string name="perform_search_hint">To perform the search input your query in the search field and hit enter</string>
-    <string name="error_after_search">Error occurred, try again</string>
-    <string name="nothing_was_found">Nothing was found, try a different query!</string>
-    <string name="notification_channel_name">notification channel</string>
-    <string name="search">Search</string>
-    <string name="search_query">Query</string>
-    <string name="sentence_what_to_do">What do you want to do with the sentence?</string>
-    <string name="text_copied_to_clipboard">Text copied to clipboard</string>
-    <string name="copy_original_text">Copy English text</string>
-    <string name="copy_translated_text">Copy Chinese text</string>
-    <string name="copy_both">Copy both</string>
+    <string name="home_fragment_error_after_search">Error occurred, try again</string>
+    <string name="home_fragment_nothing_was_found">Nothing was found, try a different query!</string>
+    <string name="home_fragment_perform_search_hint">To perform the search input your query in the search field and hit enter</string>
+    <string name="home_fragment_search">Search</string>
+
+    <string name="sentence_dialog_fragment_copy_both">Copy both</string>
+    <string name="sentence_dialog_fragment_copy_original_text">Copy English text</string>
+    <string name="sentence_dialog_fragment_copy_translated_text">Copy Chinese text</string>
+    <string name="sentence_dialog_fragment_text_copied_to_clipboard">Text copied to clipboard</string>
+    <string name="sentence_dialog_fragment_what_to_do">What do you want to do with the sentence?</string>
 </resources>

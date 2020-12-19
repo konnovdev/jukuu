@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
         when (state) {
             is HomeState.EmptyNoSearch -> {
                 binding.emptyContentStub.isVisible = true
-                binding.emptyContentStub.setText(R.string.perform_search_hint)
+                binding.emptyContentStub.setText(R.string.home_fragment_perform_search_hint)
             }
 
             is HomeState.Progress -> {
@@ -113,12 +113,12 @@ class HomeFragment : Fragment() {
             is HomeState.EmptyResultAfterSearch -> {
                 showContent(emptyList())
                 binding.emptyContentStub.isVisible = true
-                binding.emptyContentStub.setText(R.string.nothing_was_found)
+                binding.emptyContentStub.setText(R.string.home_fragment_nothing_was_found)
             }
             is HomeState.Error -> {
                 showContent(emptyList())
                 binding.emptyContentStub.isVisible = true
-                binding.emptyContentStub.setText(R.string.error_after_search)
+                binding.emptyContentStub.setText(R.string.home_fragment_error_after_search)
             }
         }
     }
