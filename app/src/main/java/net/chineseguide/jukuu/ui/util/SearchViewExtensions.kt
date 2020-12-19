@@ -1,4 +1,4 @@
-package net.chineseguide.jukuu.ui
+package net.chineseguide.jukuu.ui.util
 
 import androidx.appcompat.widget.SearchView
 

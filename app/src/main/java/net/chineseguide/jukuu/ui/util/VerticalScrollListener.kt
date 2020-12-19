@@ -1,3 +1,5 @@
+package net.chineseguide.jukuu.ui.util
+
 import androidx.recyclerview.widget.RecyclerView
 
 class VerticalScrollListener(
