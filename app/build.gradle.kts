@@ -16,7 +16,7 @@ android {
     }
     viewBinding.isEnabled = true
     lintOptions {
-        lintConfig = file("lint.xml")
+        setLintConfig(file("lint.xml"))
     }
 }
 
