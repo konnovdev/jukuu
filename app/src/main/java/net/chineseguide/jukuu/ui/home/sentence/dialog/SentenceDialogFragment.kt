@@ -17,6 +17,7 @@ import net.chineseguide.jukuu.di.Scopes
 import net.chineseguide.jukuu.di.module.SentenceDialogModule
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
+import net.chineseguide.jukuu.presentation.home.sentence.dialog.SentencesViewModel
 import net.chineseguide.jukuu.ui.util.bundleOf
 import net.chineseguide.jukuu.ui.util.observeSafe
 import toothpick.Toothpick

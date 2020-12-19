@@ -14,6 +14,8 @@ import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.FragmentHomeBinding
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
+import net.chineseguide.jukuu.presentation.home.HomeState
+import net.chineseguide.jukuu.presentation.home.HomeViewModel
 import net.chineseguide.jukuu.ui.home.sentence.dialog.SentenceDialogFragment
 import net.chineseguide.jukuu.ui.util.observeSafe
 import net.chineseguide.jukuu.ui.util.setOnQuerySubmittedListener
