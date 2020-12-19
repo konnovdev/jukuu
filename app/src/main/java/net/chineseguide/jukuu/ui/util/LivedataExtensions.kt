@@ -1,4 +1,4 @@
-package net.chineseguide.jukuu.ui
+package net.chineseguide.jukuu.ui.util
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

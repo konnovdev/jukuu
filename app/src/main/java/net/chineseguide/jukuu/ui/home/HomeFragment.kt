@@ -1,6 +1,6 @@
 package net.chineseguide.jukuu.ui.home
 
-import VerticalScrollListener
+import net.chineseguide.jukuu.ui.util.VerticalScrollListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +15,8 @@ import net.chineseguide.jukuu.databinding.FragmentHomeBinding
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.ui.home.sentence.dialog.SentenceDialogFragment
-import net.chineseguide.jukuu.ui.observeSafe
-import net.chineseguide.jukuu.ui.setOnQuerySubmittedListener
+import net.chineseguide.jukuu.ui.util.observeSafe
+import net.chineseguide.jukuu.ui.util.setOnQuerySubmittedListener
 
 class HomeFragment : Fragment() {
 
