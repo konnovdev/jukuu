@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.DialogFragmentSentenceBinding
@@ -20,6 +19,7 @@ import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.presentation.home.sentence.dialog.SentencesViewModel
 import net.chineseguide.jukuu.ui.util.bundleOf
 import net.chineseguide.jukuu.ui.util.observeSafe
+import net.chineseguide.jukuu.ui.util.showLongToast
 import toothpick.Toothpick
 
 var Bundle.sentence: Sentence
@@ -82,13 +82,16 @@ class SentenceDialogFragment() : DialogFragment() {
 
     private fun observeState() {
         viewModel.clipboardText.observeSafe(viewLifecycleOwner) { text ->
-            val clipboardManager =
-                requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clipData = ClipData.newPlainText("textToCopy", text)
-            clipboardManager.primaryClip = clipData
-            Toast.makeText(requireActivity(), R.string.sentence_dialog_fragment_text_copied_to_clipboard, Toast.LENGTH_LONG)
-                .show()
+            copyTextToClipboard(text)
+            showLongToast(R.string.sentence_dialog_fragment_text_copied_to_clipboard)
             dismiss()
         }
+    }
+
+    private fun copyTextToClipboard(text: String) {
+        val clipboardManager =
+            requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newPlainText("textToCopy", text)
+        clipboardManager.primaryClip = clipData
     }
 }
