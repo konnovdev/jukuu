@@ -8,22 +8,20 @@ import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.ItemResultBinding
 import net.chineseguide.jukuu.databinding.ItemResultBinding.bind
 import net.chineseguide.jukuu.domain.entity.Sentence
+import net.chineseguide.jukuu.ui.util.DiffUtilCallback
 
 class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) :
     RecyclerView.Adapter<ViewHolder>() {
+
+    private val diffUtil =
+        DiffUtilCallback<Sentence> { old, new -> old.originalSentence == new.originalSentence }
 
     private val itemList = mutableListOf<Sentence>()
 
     fun setItemList(sentences: List<Sentence>) {
         itemList.clear()
         itemList.addAll(sentences)
-        notifyDataSetChanged()
-    }
-
-    fun addItems(sentences: List<Sentence>) {
-        val lastIndexOfOldList = itemList.lastIndex
-        itemList.addAll(sentences)
-        notifyItemRangeInserted(lastIndexOfOldList + 1, sentences.size)
+        diffUtil.getDiffResult(sentences, detectMoves = false).dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

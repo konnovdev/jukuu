@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import net.chineseguide.jukuu.domain.usecase.GetNextSentencesUseCase
 import net.chineseguide.jukuu.domain.usecase.GetSentenceCollectionUseCase
@@ -45,7 +46,7 @@ class HomeViewModel @Inject constructor(
             if (sentenceCollection.sentences.isEmpty()) {
                 _state.value = HomeState.EmptyResultAfterSearch
             } else {
-                _state.value = HomeState.FirstSentencesLoaded(sentenceCollection)
+                _state.value = HomeState.Content(sentenceCollection)
             }
         }
     }
@@ -69,12 +70,14 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private suspend fun showNextSentencesLoaded(sentenceCollection: SentenceCollection) {
+    private suspend fun showNextSentencesLoaded(nextSentences: List<Sentence>) {
         withContext(Main) {
-            if (sentenceCollection.sentences.isEmpty()) {
-                _state.value = HomeState.EmptyResultAfterSearch
+            if (nextSentences.isEmpty()) {
+                loadingNextSentencesNotAllowed = true
             } else {
-                _state.value = HomeState.NextSentencesLoaded(sentenceCollection)
+                val currentSentenceCollection = (state.value as HomeState.Content).sentenceCollection
+                currentSentenceCollection.sentences.addAll(nextSentences)
+                _state.value = HomeState.Content(currentSentenceCollection)
             }
         }
     }

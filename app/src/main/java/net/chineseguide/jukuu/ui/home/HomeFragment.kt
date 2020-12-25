@@ -105,12 +105,8 @@ class HomeFragment : Fragment() {
             is HomeState.Progress -> {
                 showInProgress()
             }
-            is HomeState.FirstSentencesLoaded -> {
+            is HomeState.Content -> {
                 showContent(state.sentenceCollection.sentences)
-
-            }
-            is HomeState.NextSentencesLoaded -> {
-                showNextSentences(state.sentenceCollection.sentences)
             }
             is HomeState.EmptyResultAfterSearch -> {
                 showContent(emptyList())
@@ -135,9 +131,5 @@ class HomeFragment : Fragment() {
         binding.searchBar.isEnabled = true
         binding.progressBar.isVisible = false
         sentencesAdapter.setItemList(sentences)
-    }
-
-    private fun showNextSentences(sentences: List<Sentence>) {
-        sentencesAdapter.addItems(sentences)
     }
 }

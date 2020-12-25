@@ -8,9 +8,7 @@ sealed class HomeState {
 
     object Progress : HomeState()
 
-    class FirstSentencesLoaded(val sentenceCollection: SentenceCollection) : HomeState()
-
-    class NextSentencesLoaded(val sentenceCollection: SentenceCollection) : HomeState()
+    class Content(val sentenceCollection: SentenceCollection) : HomeState()
 
     object EmptyResultAfterSearch : HomeState()
 
