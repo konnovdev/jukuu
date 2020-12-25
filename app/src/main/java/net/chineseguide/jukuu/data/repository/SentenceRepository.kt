@@ -11,7 +11,7 @@ interface SentenceRepository {
 
     fun get(query: String): SentenceCollection
 
-    fun get(query: String, page: Int): SentenceCollection
+    fun getNext(query: String, sentenceIndex: Int): SentenceCollection?
 }
 
 class SentenceRepositoryImpl @Inject constructor(
@@ -20,13 +20,31 @@ class SentenceRepositoryImpl @Inject constructor(
     private val jukuuHtmlConverter: JukuuHtmlConverter
 ) : SentenceRepository {
 
+    private companion object {
+        const val JUKUU_SENTENCES_PER_PAGE = 10
+        const val JUKUU_PAGES_LIMIT = 10
+        val DOWNLOAD_NOT_NEEDED = null
+    }
+
+    private var lastDownloadedPage = 0
+
     override fun get(query: String): SentenceCollection =
         urlConverter.convert("${query.toUri()}")
             .let { remoteDataSource.get("http://www.jukuu.com/search.php?q=$it") }
             .let(jukuuHtmlConverter::convert)
+            .also { lastDownloadedPage = 0 }
 
-    override fun get(query: String, page: Int): SentenceCollection =
-        urlConverter.convert("${query.toUri()}")
+    override fun getNext(query: String, sentenceIndex: Int): SentenceCollection? {
+        val page = sentenceIndex / JUKUU_SENTENCES_PER_PAGE
+
+        if (page <= lastDownloadedPage || page >= JUKUU_PAGES_LIMIT) {
+            return DOWNLOAD_NOT_NEEDED
+        }
+
+        lastDownloadedPage++
+
+        return urlConverter.convert("${query.toUri()}")
             .let { remoteDataSource.get("http://www.jukuu.com/show-$it-$page.html") }
             .let(jukuuHtmlConverter::convert)
+    }
 }

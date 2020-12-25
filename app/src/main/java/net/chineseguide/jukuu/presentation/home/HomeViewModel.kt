@@ -19,20 +19,10 @@ class HomeViewModel @Inject constructor(
     private val getNextSentencesUseCase: GetNextSentencesUseCase
 ) : ViewModel() {
 
-    private companion object {
-        const val JUKUU_PAGES_LIMIT = 10
-        const val SENTENCES_PER_PAGE = 10
-        const val FIRST_PAGE = 0
-    }
-
     private val _state = MutableLiveData<HomeState>(HomeState.EmptyNoSearch)
     val state: LiveData<HomeState> = _state
-    private var pageCounter = FIRST_PAGE
-    private var loadingNextSentencesNotAllowed = false
 
     fun search(query: String) {
-        pageCounter = FIRST_PAGE
-        loadingNextSentencesNotAllowed = false
         _state.value = HomeState.Progress
         viewModelScope.launch(context = IO) {
             runCatching { getSentenceCollectionUseCase(query) }
@@ -57,32 +47,20 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun listScrolled(query: String, messageIndex: Int) {
-        val page = messageIndex / SENTENCES_PER_PAGE
-        if (page == pageCounter || page == JUKUU_PAGES_LIMIT || loadingNextSentencesNotAllowed) {
-            return
-        }
-        pageCounter++
+    fun listScrolled(query: String, sentenceIndex: Int) {
         viewModelScope.launch(context = IO) {
-            runCatching { getNextSentencesUseCase(query, pageCounter) }
+            runCatching { getNextSentencesUseCase(query, sentenceIndex) }
                 .onSuccess { showNextSentencesLoaded(it) }
-                .onFailure { handleNextSentencesError() }
         }
     }
 
     private suspend fun showNextSentencesLoaded(nextSentences: List<Sentence>) {
         withContext(Main) {
-            if (nextSentences.isEmpty()) {
-                loadingNextSentencesNotAllowed = true
-            } else {
+            if (nextSentences.isNotEmpty()) {
                 val currentSentenceCollection = (state.value as HomeState.Content).sentenceCollection
                 currentSentenceCollection.sentences.addAll(nextSentences)
                 _state.value = HomeState.Content(currentSentenceCollection)
             }
         }
-    }
-
-    private fun handleNextSentencesError() {
-        loadingNextSentencesNotAllowed = true
     }
 }

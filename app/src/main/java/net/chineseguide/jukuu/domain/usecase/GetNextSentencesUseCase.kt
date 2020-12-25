@@ -8,6 +8,6 @@ class GetNextSentencesUseCase @Inject constructor(
     private val sentenceRepository: SentenceRepository
 ) {
 
-    operator fun invoke(query: String, page: Int): List<Sentence> =
-        sentenceRepository.get(query, page).sentences
+    operator fun invoke(query: String, sentenceIndex: Int): List<Sentence> =
+        sentenceRepository.getNext(query, sentenceIndex)?.sentences ?: emptyList()
 }
