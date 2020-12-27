@@ -17,6 +17,7 @@ import net.chineseguide.jukuu.di.module.SentenceDialogModule
 import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.presentation.home.sentence.dialog.SentencesViewModel
+import net.chineseguide.jukuu.ui.base.BaseToothpickDialogFragment
 import net.chineseguide.jukuu.ui.util.bundleOf
 import net.chineseguide.jukuu.ui.util.observeSafe
 import net.chineseguide.jukuu.ui.util.showLongToast
@@ -26,7 +27,7 @@ var Bundle.sentence: Sentence
     get() = getSerializable("sentence_arg") as Sentence
     set(value) = putSerializable("sentence_arg", value)
 
-class SentenceDialogFragment() : DialogFragment() {
+class SentenceDialogFragment() : BaseToothpickDialogFragment() {
 
     private val viewModel by viewModel<SentencesViewModel>()
 
