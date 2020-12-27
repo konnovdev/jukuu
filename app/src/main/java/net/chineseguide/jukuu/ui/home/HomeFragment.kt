@@ -77,9 +77,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun openSentenceDialog(sentence: Sentence) {
-        val sentenceDialogFragment = SentenceDialogFragment.newInstance(sentence)
         val tag = SentenceDialogFragment::class::java.get().canonicalName
-        sentenceDialogFragment.show(childFragmentManager, tag)
+        val dialogIsNotShowing = childFragmentManager.findFragmentByTag(tag) == null
+        if (dialogIsNotShowing) {
+            val sentenceDialogFragment = SentenceDialogFragment.newInstance(sentence)
+            sentenceDialogFragment.show(childFragmentManager, tag)
+        }
     }
 
     private fun setUpSearchBar() {
