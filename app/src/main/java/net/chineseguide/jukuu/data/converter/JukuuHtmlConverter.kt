@@ -20,8 +20,8 @@ class JukuuHtmlConverter @Inject constructor() {
         for (sentenceId in 0 until englishSentences.size) {
             val sentence = Sentence(
                 sentenceId.toString(),
-                englishSentences[sentenceId].html().removeTags(),
-                chineseSentences[sentenceId].html().removeTags()
+                englishSentences[sentenceId].html().removeTags().removeIndexNumber().removeLeadingSpace(),
+                chineseSentences[sentenceId].html().removeTags().removeLeadingSpace()
             )
             sentences.add(sentence)
         }
@@ -41,4 +41,8 @@ class JukuuHtmlConverter @Inject constructor() {
         }
         return innerHtml.toString().replace("\n", "")
     }
+
+    private fun String.removeIndexNumber(): String = this.substringAfter(". ")
+
+    private fun String.removeLeadingSpace(): String = this.removePrefix(" ")
 }
