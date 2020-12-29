@@ -57,7 +57,8 @@ class HomeViewModel @Inject constructor(
     private suspend fun showNextSentencesLoaded(nextSentences: List<Sentence>) {
         withContext(Main) {
             if (nextSentences.isNotEmpty()) {
-                val currentSentenceCollection = (state.value as HomeState.Content).sentenceCollection
+                val contentState = (state.value as HomeState.Content)
+                val currentSentenceCollection = contentState.sentenceCollection
                 currentSentenceCollection.sentences.addAll(nextSentences)
                 _state.value = HomeState.Content(currentSentenceCollection)
             }

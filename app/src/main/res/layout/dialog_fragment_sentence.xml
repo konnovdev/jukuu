@@ -22,25 +22,25 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_original_text_button"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sentence_dialog_fragment_copy_original_text" />
+        android:text="@string/sentence_dialog_fragment_copy_original_text"
+        android:textColor="@color/colorPrimaryDark" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_translated_text_button"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sentence_dialog_fragment_copy_translated_text" />
+        android:text="@string/sentence_dialog_fragment_copy_translated_text"
+        android:textColor="@color/colorPrimaryDark" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_both_button"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sentence_dialog_fragment_copy_both" />
+        android:text="@string/sentence_dialog_fragment_copy_both"
+        android:textColor="@color/colorPrimaryDark" />
 
 </LinearLayout>

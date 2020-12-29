@@ -109,14 +109,17 @@ class HomeFragment : BaseToothpickFragment() {
             is HomeState.Progress -> {
                 showInProgress()
             }
+
             is HomeState.Content -> {
                 showContent(state.sentenceCollection.sentences)
             }
+
             is HomeState.EmptyResultAfterSearch -> {
                 showContent(emptyList())
                 binding.emptyContentStub.isVisible = true
                 binding.emptyContentStub.setText(R.string.home_fragment_nothing_was_found)
             }
+
             is HomeState.Error -> {
                 showContent(emptyList())
                 binding.emptyContentStub.isVisible = true

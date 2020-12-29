@@ -10,8 +10,9 @@ import net.chineseguide.jukuu.databinding.ItemResultBinding.bind
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.ui.util.DiffUtilCallback
 
-class SentencesAdapter(private val onItemClick: (Sentence) -> Unit) :
-    RecyclerView.Adapter<ViewHolder>() {
+class SentencesAdapter(
+    private val onItemClick: (Sentence) -> Unit
+) : RecyclerView.Adapter<ViewHolder>() {
 
     private val diffUtil =
         DiffUtilCallback<Sentence> { old, new -> old.originalSentence == new.originalSentence }

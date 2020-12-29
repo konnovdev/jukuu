@@ -7,7 +7,7 @@ class VerticalScrollListener(
 ) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-        if(dy > 0) {
+        if (dy > 0) {
             onScrolled?.invoke()
         }
     }

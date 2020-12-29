@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import javax.inject.Inject
 
-class SentencesViewModel @Inject constructor(private val sentence: Sentence): ViewModel() {
+class SentencesViewModel @Inject constructor(private val sentence: Sentence) : ViewModel() {
 
     private val _clipboardText = MutableLiveData<String>()
     val clipboardText: LiveData<String> = _clipboardText

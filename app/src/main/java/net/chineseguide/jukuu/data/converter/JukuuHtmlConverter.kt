@@ -20,8 +20,15 @@ class JukuuHtmlConverter @Inject constructor() {
         for (sentenceId in 0 until englishSentences.size) {
             val sentence = Sentence(
                 sentenceId.toString(),
-                englishSentences[sentenceId].html().removeTags().removeIndexNumber().removeLeadingSpace(),
-                chineseSentences[sentenceId].html().removeTags().removeLeadingSpace()
+                englishSentences[sentenceId]
+                    .html()
+                    .removeTags()
+                    .removeIndexNumber()
+                    .removeLeadingSpace(),
+                chineseSentences[sentenceId]
+                    .html()
+                    .removeTags()
+                    .removeLeadingSpace()
             )
             sentences.add(sentence)
         }
