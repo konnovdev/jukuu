@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("androidx.navigation.safeargs")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
     kotlin("android")
     kotlin("kapt")
 }
@@ -39,6 +41,10 @@ dependencies {
     implementation(Libraries.fragmentKtx)
     implementation(Libraries.navigationFragment)
     implementation(Libraries.navigationUi)
+
+    implementation(platform(Libraries.firebaseBom))
+    implementation(Libraries.firebaseAnalytics)
+    implementation(Libraries.crashlytics)
 
     testImplementation(TestLibraries.junit)
 }

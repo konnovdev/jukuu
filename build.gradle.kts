@@ -8,6 +8,8 @@ buildscript {
     dependencies {
         classpath(Classpaths.gradleAndroidPlugin)
         classpath(Classpaths.navigationPlugin)
+        classpath(Classpaths.googleServices)
+        classpath(Classpaths.crashlyticsGradle)
         classpath(kotlin("gradle-plugin", version = Versions.kotlin))
     }
 }

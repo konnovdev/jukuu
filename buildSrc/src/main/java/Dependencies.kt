@@ -13,12 +13,18 @@ object Versions {
     const val lifecycle = "2.2.0"
     const val navigation = "2.3.0-alpha04"
 
+    const val googleServices = "4.3.4"
+    const val crashlyticsGradle = "2.4.1"
+    const val firebase = "26.2.0"
+
     const val junit = "4.13.1"
 }
 
 object Classpaths {
     const val gradleAndroidPlugin = "com.android.tools.build:gradle:${Versions.gradleAndroidPlugin}"
     const val navigationPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
+    const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
+    const val crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:${Versions.crashlyticsGradle}"
 }
 
 object Libraries {
@@ -37,6 +43,11 @@ object Libraries {
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     const val navigationFragment = "androidx.navigation:navigation-fragment:${Versions.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui:${Versions.navigation}"
+
+    const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebase}"
+    // When using the BoM, don't specify versions in Firebase dependencies
+    const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
+    const val crashlytics = "com.google.firebase:firebase-crashlytics"
 }
 
 object TestLibraries {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "340058289769",
+    "project_id": "jukuu-5c2a2",
+    "storage_bucket": "jukuu-5c2a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340058289769:android:03881c9abb244d71d014f8",
+        "android_client_info": {
+          "package_name": "net.chineseguide.jukuu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340058289769-lfdl65msq7900nf9bssibng6rt3rbf4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkVA1MqVrR7Ze_grDerZlezK06mJlgeCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340058289769-lfdl65msq7900nf9bssibng6rt3rbf4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
