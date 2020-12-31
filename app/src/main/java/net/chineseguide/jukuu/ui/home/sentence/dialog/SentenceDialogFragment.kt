@@ -93,6 +93,6 @@ class SentenceDialogFragment() : BaseToothpickDialogFragment() {
         val clipboardManager =
             requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("textToCopy", text)
-        clipboardManager.primaryClip = clipData
+        clipboardManager.setPrimaryClip(clipData)
     }
 }
