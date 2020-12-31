@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -43,6 +44,7 @@ class HomeViewModel @Inject constructor(
 
     private suspend fun showQueryError(error: Throwable) {
         withContext(Main) {
+            FirebaseCrashlytics.getInstance().recordException(error)
             _state.value = HomeState.Error(error)
         }
     }
