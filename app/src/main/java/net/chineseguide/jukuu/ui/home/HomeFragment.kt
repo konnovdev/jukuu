@@ -23,6 +23,11 @@ import net.chineseguide.jukuu.ui.util.setOnQuerySubmittedListener
 
 class HomeFragment : BaseToothpickFragment() {
 
+    private companion object {
+        const val SLIGHTLY_VISIBLE = 0.4f
+        const val COMPLETELY_VISIBLE = 1f
+    }
+
     private val viewModel by viewModel<HomeViewModel>()
 
     private lateinit var binding: FragmentHomeBinding
@@ -131,10 +136,12 @@ class HomeFragment : BaseToothpickFragment() {
     private fun showInProgress() {
         binding.searchBar.isEnabled = false
         binding.emptyContentStub.isVisible = false
+        binding.sentencesRecyclerView.alpha = SLIGHTLY_VISIBLE
         binding.progressBar.isVisible = true
     }
 
     private fun showContent(sentences: List<Sentence>) {
+        binding.sentencesRecyclerView.alpha = COMPLETELY_VISIBLE
         binding.searchBar.isEnabled = true
         binding.progressBar.isVisible = false
         sentencesAdapter.setItemList(sentences)
