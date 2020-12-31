@@ -13,19 +13,6 @@
     tools:ignore="Overdraw">
 
     <TextView
-        android:id="@+id/sentencesIndex"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_8"
-        android:gravity="center"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/translatedSentence"
-        tools:text="1" />
-
-    <TextView
         android:id="@+id/originalSentence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,5 +31,18 @@
         app:layout_constraintStart_toStartOf="@id/originalSentence"
         app:layout_constraintTop_toBottomOf="@id/originalSentence"
         tools:text="這是他家" />
+
+    <TextView
+        android:id="@+id/sentencesIndex"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_8"
+        android:gravity="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/translatedSentence"
+        tools:text="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
