@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="UnusedAttribute">
+        tools:ignore="UnusedAttribute, GoogleAppIndexingWarning">
 
         <activity
             android:name="net.chineseguide.jukuu.ui.MainActivity"

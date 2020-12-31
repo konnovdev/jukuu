@@ -1,8 +1,16 @@
 <lint>
     <issue id="InvalidPackage">
-        <ignore path="**toothpick*.jar"/>
+        <ignore path="**toothpick*.jar" />
     </issue>
     <issue id="UnusedResources">
         <ignore regexp="project_id" />
+    </issue>
+    <issue id="DuplicateStrings" severity="ignore">
+        <!-- echnically here we just need to ignore all libraries with
+        `<ignore path="**/.gradle/caches/**"/>`, but it doesn't work
+         TODO find out how to fix it -->
+    </issue>
+    <issue id="UnknownNullness">
+        <ignore path="build" />
     </issue>
 </lint>

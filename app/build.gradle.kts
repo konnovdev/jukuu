@@ -22,6 +22,9 @@ android {
         isCheckDependencies = true
         isCheckGeneratedSources = true
         isWarningsAsErrors = true
+        isIgnoreTestSources = true
+        isCheckAllWarnings = true
+        isShowAll = true
     }
 }
 
