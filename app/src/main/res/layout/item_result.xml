@@ -6,8 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
-    android:padding="@dimen/spacing_24"
+    android:paddingStart="@dimen/spacing_24"
+    android:paddingTop="@dimen/spacing_24"
+    android:paddingEnd="@dimen/spacing_24"
+    android:paddingBottom="@dimen/spacing_8"
     tools:ignore="Overdraw">
+
+    <TextView
+        android:id="@+id/sentencesIndex"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_8"
+        android:gravity="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/translatedSentence"
+        tools:text="1" />
 
     <TextView
         android:id="@+id/originalSentence"

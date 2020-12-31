@@ -44,6 +44,8 @@ class ViewHolder(itemView: View, private val onItemClick: (Sentence) -> Unit) :
     private val binding: ItemResultBinding = bind(itemView)
 
     fun bind(item: Sentence) {
+        val sentenceIndex = adapterPosition + 1
+        binding.sentencesIndex.text = sentenceIndex.toString()
         binding.originalSentence.text = item.originalSentence
         binding.translatedSentence.text = item.translatedSentence
         binding.itemRoot.setOnClickListener { onItemClick(item) }
