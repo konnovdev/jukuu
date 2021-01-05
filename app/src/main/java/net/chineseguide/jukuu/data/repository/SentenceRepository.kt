@@ -3,7 +3,7 @@ package net.chineseguide.jukuu.data.repository
 import androidx.core.net.toUri
 import net.chineseguide.jukuu.data.converter.JukuuHtmlConverter
 import net.chineseguide.jukuu.data.converter.UrlConverter
-import net.chineseguide.jukuu.data.datasource.ResultRemoteDataSource
+import net.chineseguide.jukuu.data.datasource.SentenceRemoteDataSource
 import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ interface SentenceRepository {
 }
 
 class SentenceRepositoryImpl @Inject constructor(
-    private val remoteDataSource: ResultRemoteDataSource,
+    private val remoteDataSource: SentenceRemoteDataSource,
     private val urlConverter: UrlConverter,
     private val jukuuHtmlConverter: JukuuHtmlConverter
 ) : SentenceRepository {

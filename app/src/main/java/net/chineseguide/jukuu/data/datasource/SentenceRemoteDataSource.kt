@@ -4,12 +4,12 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import javax.inject.Inject
 
-interface ResultRemoteDataSource {
+interface SentenceRemoteDataSource {
 
     fun get(url: String): Document
 }
 
-class ResultRemoteDataSourceImpl @Inject constructor() : ResultRemoteDataSource {
+class SentenceRemoteDataSourceImpl @Inject constructor() : SentenceRemoteDataSource {
 
     override fun get(url: String): Document =
         Jsoup.connect(url).get()
