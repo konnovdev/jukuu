@@ -10,6 +10,7 @@ buildscript {
         classpath(Classpaths.navigationPlugin)
         classpath(Classpaths.googleServices)
         classpath(Classpaths.crashlyticsGradle)
+        classpath(Classpaths.gradleDaggerHilt)
         classpath(kotlin("gradle-plugin", version = Versions.kotlin))
     }
 }
