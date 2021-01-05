@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import net.chineseguide.jukuu.di.Scopes
 import toothpick.Toothpick
 
+@Deprecated("No need for hilt")
 abstract class BaseToothpickActivity(@LayoutRes layout: Int) : AppCompatActivity(layout) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
