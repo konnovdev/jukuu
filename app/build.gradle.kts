@@ -3,6 +3,7 @@ plugins {
     id("androidx.navigation.safeargs")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
 }
@@ -33,6 +34,10 @@ dependencies {
 
     implementation(Libraries.toothpickCore)
     kapt(Libraries.toothpickCompiler)
+    implementation(Libraries.daggerHiltCore)
+    implementation(Libraries.hiltLifecycleViewModel)
+    kapt(Libraries.daggerHiltAnnotationProcessor)
+    kapt(Libraries.hiltAndroidxCompiler)
 
     implementation(Libraries.jsoup)
 
@@ -50,4 +55,8 @@ dependencies {
     implementation(Libraries.crashlytics)
 
     testImplementation(TestLibraries.junit)
+}
+
+kapt {
+    correctErrorTypes = true
 }

@@ -2,6 +2,8 @@ object Versions {
     const val gradleAndroidPlugin = "3.6.0"
     const val kotlin = "1.3.61"
     const val toothpick = "3.1.0"
+    const val daggerHilt = "2.28-alpha"
+    const val hiltLifecycleViewModel = "1.0.0-alpha01"
 
     const val jsoup = "1.13.1"
 
@@ -25,6 +27,7 @@ object Classpaths {
     const val navigationPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
     const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
     const val crashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:${Versions.crashlyticsGradle}"
+    const val gradleDaggerHilt = "com.google.dagger:hilt-android-gradle-plugin:${Versions.daggerHilt}"
 }
 
 object Libraries {
@@ -32,6 +35,10 @@ object Libraries {
 
     const val toothpickCore = "com.github.stephanenicolas.toothpick:toothpick-runtime:${Versions.toothpick}"
     const val toothpickCompiler = "com.github.stephanenicolas.toothpick:toothpick-compiler:${Versions.toothpick}"
+    const val daggerHiltCore = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+    const val daggerHiltAnnotationProcessor = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    const val hiltLifecycleViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModel}"
+    const val hiltAndroidxCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltLifecycleViewModel}"
 
     const val jsoup = "org.jsoup:jsoup:${Versions.jsoup}"
 
