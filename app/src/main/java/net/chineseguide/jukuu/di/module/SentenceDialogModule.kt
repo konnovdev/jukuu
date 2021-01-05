@@ -3,6 +3,7 @@ package net.chineseguide.jukuu.di.module
 import net.chineseguide.jukuu.domain.entity.Sentence
 import toothpick.config.Module
 
+@Deprecated("no need for hilt")
 class SentenceDialogModule(sentence: Sentence) : Module() {
 
     init {

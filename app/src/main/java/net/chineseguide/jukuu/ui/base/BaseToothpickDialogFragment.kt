@@ -5,6 +5,7 @@ import androidx.fragment.app.DialogFragment
 import net.chineseguide.jukuu.di.Scopes
 import toothpick.Toothpick
 
+@Deprecated("No need for hilt")
 abstract class BaseToothpickDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

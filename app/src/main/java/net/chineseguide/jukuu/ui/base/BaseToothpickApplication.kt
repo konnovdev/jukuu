@@ -7,6 +7,7 @@ import net.chineseguide.jukuu.di.module.DataModule
 import toothpick.Toothpick
 import toothpick.configuration.Configuration
 
+@Deprecated("No need for hilt")
 abstract class BaseToothpickApplication : Application() {
 
     override fun onCreate() {

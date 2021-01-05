@@ -6,6 +6,7 @@ import net.chineseguide.jukuu.data.repository.SentenceRepository
 import net.chineseguide.jukuu.data.repository.SentenceRepositoryImpl
 import toothpick.config.Module
 
+@Deprecated("no need for hilt")
 class DataModule : Module() {
 
     init {
