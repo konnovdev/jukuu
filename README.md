@@ -16,7 +16,7 @@ The app fetches all the data from [jukuu.com](http://www.jukuu.com) (raw HTML, b
 * MVVM
 * Viewbinding
 * Jsoup
-* Toothpick
+* Dagger Hilt
 * Couroutines
 * Navigation component
 
