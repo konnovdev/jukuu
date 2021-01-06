@@ -1,5 +1,7 @@
 package net.chineseguide.jukuu.ui
 
-import net.chineseguide.jukuu.ui.base.BaseToothpickApplication
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class App : BaseToothpickApplication()
+@HiltAndroidApp
+class App : Application()

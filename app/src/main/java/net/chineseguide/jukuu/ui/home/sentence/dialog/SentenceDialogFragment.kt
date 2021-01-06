@@ -9,35 +9,32 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.DialogFragmentSentenceBinding
-import net.chineseguide.jukuu.di.Scopes
-import net.chineseguide.jukuu.di.module.SentenceDialogModule
-import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.presentation.home.sentence.dialog.SentencesViewModel
-import net.chineseguide.jukuu.ui.base.BaseToothpickDialogFragment
 import net.chineseguide.jukuu.ui.util.bundleOf
 import net.chineseguide.jukuu.ui.util.observeSafe
 import net.chineseguide.jukuu.ui.util.showLongToast
-import toothpick.Toothpick
 
 var Bundle.sentence: Sentence
     get() = getSerializable("sentence_arg") as Sentence
     set(value) = putSerializable("sentence_arg", value)
 
-class SentenceDialogFragment() : BaseToothpickDialogFragment() {
+@AndroidEntryPoint
+class SentenceDialogFragment() : AppCompatDialogFragment() {
 
-    private val viewModel by viewModel<SentencesViewModel>()
+    private val viewModel: SentencesViewModel by viewModels()
 
     companion object {
         fun newInstance(sentence: Sentence): DialogFragment =
             SentenceDialogFragment()
                 .apply {
                     arguments = bundleOf { this.sentence = sentence }
-                    val fragmentScope = Toothpick.openScope(Scopes.FRAGMENT)
-                    fragmentScope.installModules(SentenceDialogModule(requireArguments().sentence))
                 }
     }
 

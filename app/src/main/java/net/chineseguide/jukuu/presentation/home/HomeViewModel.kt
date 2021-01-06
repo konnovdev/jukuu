@@ -1,5 +1,6 @@
 package net.chineseguide.jukuu.presentation.home
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,9 +14,8 @@ import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import net.chineseguide.jukuu.domain.usecase.GetNextSentencesUseCase
 import net.chineseguide.jukuu.domain.usecase.GetSentenceCollectionUseCase
-import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(
+class HomeViewModel @ViewModelInject constructor(
     private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase,
     private val getNextSentencesUseCase: GetNextSentencesUseCase
 ) : ViewModel() {
