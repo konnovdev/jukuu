@@ -1,13 +1,26 @@
 <lint>
+    <!--Google services check-->
     <issue id="UnusedResources">
         <ignore regexp="project_id" />
     </issue>
+
     <issue id="DuplicateStrings" severity="ignore">
-        <!-- echnically here we just need to ignore all libraries with
+        <!-- Technically here we just need to ignore all libraries with
         `<ignore path="**/.gradle/caches/**"/>`, but it doesn't work
          TODO find out how to fix it -->
     </issue>
     <issue id="UnknownNullness">
+        <ignore path="build" />
+    </issue>
+
+    <!--Dagger Hilt checks-->
+    <issue id="RestrictedApi">
+        <ignore path="build" />
+    </issue>
+    <issue id="SyntheticAccessor">
+        <ignore path="build" />
+    </issue>
+    <issue id="LambdaLast">
         <ignore path="build" />
     </issue>
 </lint>
