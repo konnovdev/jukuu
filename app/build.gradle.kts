@@ -27,13 +27,14 @@ android {
         isCheckAllWarnings = true
         isShowAll = true
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
     implementation(Libraries.kotlinStdlib)
 
-    implementation(Libraries.toothpickCore)
-    kapt(Libraries.toothpickCompiler)
     implementation(Libraries.daggerHiltCore)
     implementation(Libraries.hiltLifecycleViewModel)
     kapt(Libraries.daggerHiltAnnotationProcessor)

@@ -8,27 +8,28 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.FragmentHomeBinding
-import net.chineseguide.jukuu.di.viewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.presentation.home.HomeState
 import net.chineseguide.jukuu.presentation.home.HomeViewModel
-import net.chineseguide.jukuu.ui.base.BaseToothpickFragment
 import net.chineseguide.jukuu.ui.home.sentence.dialog.SentenceDialogFragment
 import net.chineseguide.jukuu.ui.util.observeSafe
 import net.chineseguide.jukuu.ui.util.setOnQuerySubmittedListener
 
-class HomeFragment : BaseToothpickFragment() {
+@AndroidEntryPoint
+class HomeFragment : Fragment() {
 
     private companion object {
         const val SLIGHTLY_VISIBLE = 0.4f
         const val COMPLETELY_VISIBLE = 1f
     }
 
-    private val viewModel by viewModel<HomeViewModel>()
+    private val viewModel: HomeViewModel by viewModels()
 
     private lateinit var binding: FragmentHomeBinding
 
