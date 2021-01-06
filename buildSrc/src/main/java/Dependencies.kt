@@ -1,7 +1,6 @@
 object Versions {
     const val gradleAndroidPlugin = "3.6.0"
     const val kotlin = "1.3.61"
-    const val toothpick = "3.1.0"
     const val daggerHilt = "2.28-alpha"
     const val hiltLifecycleViewModel = "1.0.0-alpha01"
 
@@ -33,8 +32,6 @@ object Classpaths {
 object Libraries {
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
 
-    const val toothpickCore = "com.github.stephanenicolas.toothpick:toothpick-runtime:${Versions.toothpick}"
-    const val toothpickCompiler = "com.github.stephanenicolas.toothpick:toothpick-compiler:${Versions.toothpick}"
     const val daggerHiltCore = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
     const val daggerHiltAnnotationProcessor = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
     const val hiltLifecycleViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModel}"

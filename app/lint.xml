@@ -1,7 +1,4 @@
 <lint>
-    <issue id="InvalidPackage">
-        <ignore path="**toothpick*.jar" />
-    </issue>
     <issue id="UnusedResources">
         <ignore regexp="project_id" />
     </issue>
