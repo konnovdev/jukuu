@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#37474f</color>
+    <color name="colorPrimaryDark">#102027</color>
+    <color name="colorAccent">#ff94c2</color>
+    <color name="textColorPrimary">@android:color/white</color>
+    <color name="dialogBackgroundColor">#1B2930</color>
+    <color name="colorSelected">#fff3e0</color>
+</resources>

@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#64b5f6</color>
     <color name="colorAccent">#D81B60</color>
     <color name="textColorPrimary">@android:color/black</color>
-
-    <color name="backgroundColor">@android:color/white</color>
+    <color name="dialogBackgroundColor">@android:color/white</color>
+    <color name="colorSelected">#ccc0ae</color>
 </resources>
