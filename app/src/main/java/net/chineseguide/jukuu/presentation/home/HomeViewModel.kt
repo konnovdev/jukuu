@@ -14,10 +14,12 @@ import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import net.chineseguide.jukuu.domain.usecase.GetNextSentencesUseCase
 import net.chineseguide.jukuu.domain.usecase.GetSentenceCollectionUseCase
+import net.chineseguide.jukuu.presentation.ErrorLogger
 
 class HomeViewModel @ViewModelInject constructor(
     private val getSentenceCollectionUseCase: GetSentenceCollectionUseCase,
-    private val getNextSentencesUseCase: GetNextSentencesUseCase
+    private val getNextSentencesUseCase: GetNextSentencesUseCase,
+    private val errorLogger: ErrorLogger
 ) : ViewModel() {
 
     private val _state = MutableLiveData<HomeState>(HomeState.EmptyNoSearch)
@@ -44,7 +46,7 @@ class HomeViewModel @ViewModelInject constructor(
 
     private suspend fun showQueryError(error: Throwable) {
         withContext(Main) {
-            FirebaseCrashlytics.getInstance().recordException(error)
+            errorLogger.log(error)
             _state.value = HomeState.Error(error)
         }
     }
