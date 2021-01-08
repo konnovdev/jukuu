@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jukuu</string>
+
+    <string name="home_fragment_error_after_search">Произошла ошибка, попробуйте еще раз</string>
+    <string name="home_fragment_nothing_was_found">Ничего не было найдено, попробуйте другой поисковый запрос (на английском или китайском)</string>
+    <string name="home_fragment_perform_search_hint">Для поиска введите свой запрос в поисковую строку (на английском или китайском) и нажмите Enter</string>
+    <string name="home_fragment_search">Поиск</string>
+
+    <string name="sentence_dialog_fragment_copy_both">Скопировать оба</string>
+    <string name="sentence_dialog_fragment_copy_original_text">Скопировать английский текст</string>
+    <string name="sentence_dialog_fragment_copy_translated_text">Скопировать китайский текст</string>
+    <string name="sentence_dialog_fragment_text_copied_to_clipboard">Текст скопирован в буфер обмена</string>
+    <string name="sentence_dialog_fragment_what_to_do">Что вы хотите сделать с предложением?</string>
+</resources>

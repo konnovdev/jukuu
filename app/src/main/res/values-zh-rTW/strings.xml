@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">句酷</string>
+
+    <string name="home_fragment_error_after_search">發生錯誤，請再試一次</string>
+    <string name="home_fragment_nothing_was_found">沒有結果，請嘗試搜尋其他詞或句</string>
+    <string name="home_fragment_perform_search_hint">在搜尋欄位輸入您的查詢然後按確認鍵以執行搜尋</string>
+    <string name="home_fragment_search">搜尋</string>
+
+    <string name="sentence_dialog_fragment_copy_both">複製兩者</string>
+    <string name="sentence_dialog_fragment_copy_original_text">複製英文句子</string>
+    <string name="sentence_dialog_fragment_copy_translated_text">複製中文句子</string>
+    <string name="sentence_dialog_fragment_text_copied_to_clipboard">已複製到剪貼簿</string>
+    <string name="sentence_dialog_fragment_what_to_do">您要如何處理句子？</string>
+</resources>
