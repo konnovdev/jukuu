@@ -3,6 +3,7 @@ package net.chineseguide.jukuu.ui.home.sentence.dialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -70,8 +71,15 @@ class SentenceDialogFragment() : AppCompatDialogFragment() {
     }
 
     private fun setScreenWidth() {
+        val width =
+            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                resources.getDimension(R.dimen.dialog_max_horizontal_width).toInt()
+            } else {
+                ViewGroup.LayoutParams.MATCH_PARENT
+            }
+
         dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
+            width,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
     }
