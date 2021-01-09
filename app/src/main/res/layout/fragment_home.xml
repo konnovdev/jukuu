@@ -39,10 +39,10 @@
             android:layout_marginEnd="@dimen/spacing_12"
             android:gravity="center"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/spacing_32"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:text="Input a search in the search query"
             tools:visibility="visible" />
 
