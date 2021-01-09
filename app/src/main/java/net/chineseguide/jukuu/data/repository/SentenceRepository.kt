@@ -30,7 +30,7 @@ class SentenceRepositoryImpl @Inject constructor(
 
     override fun get(query: String): SentenceCollection =
         urlConverter.convert("${query.toUri()}")
-            .let { remoteDataSource.get("http://www.jukuu.com/search.php?q=$it") }
+            .let { remoteDataSource.getFirstPage(query = it) }
             .let(jukuuHtmlConverter::convert)
             .also { lastDownloadedPage = 0 }
 
@@ -44,7 +44,7 @@ class SentenceRepositoryImpl @Inject constructor(
         lastDownloadedPage++
 
         return urlConverter.convert("${query.toUri()}")
-            .let { remoteDataSource.get("http://www.jukuu.com/show-$it-$page.html") }
+            .let { remoteDataSource.getCustomPage(query = it, page = page) }
             .let(jukuuHtmlConverter::convert)
     }
 }
