@@ -95,7 +95,6 @@ class HomeFragment : Fragment() {
         with(binding.searchBar) {
             setOnQuerySubmittedListener(viewModel::search)
             setIconifiedByDefault(false)
-            requestFocus()
         }
     }
 
@@ -106,6 +105,7 @@ class HomeFragment : Fragment() {
     private fun renderState(state: HomeState) {
         when (state) {
             is HomeState.EmptyNoSearch -> {
+                binding.searchBar.requestFocus()
                 binding.emptyContentStub.isVisible = true
                 binding.emptyContentStub.setText(R.string.home_fragment_perform_search_hint)
             }
