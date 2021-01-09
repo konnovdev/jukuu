@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="flatButtonStyle" format="reference" />
+    <attr name="textViewHeaderStyle" format="reference" />
+    <attr name="textViewSubHeaderStyle" format="reference" />
+</resources>

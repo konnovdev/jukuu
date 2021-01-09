@@ -1,10 +1,26 @@
 <resources>
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="flatButtonStyle">@style/FlatButton</item>
+        <item name="textViewHeaderStyle">@style/TextViewHeader</item>
+        <item name="textViewSubHeaderStyle">@style/TextViewSubHeader</item>
+    </style>
 
+    <style name="FlatButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="rippleColor">@color/colorButtonClicked</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="TextViewHeader" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/font_size_20</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="TextViewSubHeader" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/font_size_18</item>
     </style>
 
     <style name="DialogAnimation">

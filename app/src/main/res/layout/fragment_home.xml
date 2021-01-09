@@ -32,12 +32,12 @@
 
         <TextView
             android:id="@+id/emptyContentStub"
+            style="?textViewSubHeaderStyle"
             android:layout_width="@dimen/spacing_0"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_12"
             android:layout_marginEnd="@dimen/spacing_12"
             android:gravity="center"
-            android:textSize="@dimen/font_size_18"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
