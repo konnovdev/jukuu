@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -94,9 +93,8 @@ class HomeFragment : Fragment() {
 
     private fun setUpSearchBar() {
         with(binding.searchBar) {
-            setOnClickListener { (it as SearchView).onActionViewExpanded() }
             setOnQuerySubmittedListener(viewModel::search)
-            isIconified = false
+            setIconifiedByDefault(false)
             requestFocus()
         }
     }
