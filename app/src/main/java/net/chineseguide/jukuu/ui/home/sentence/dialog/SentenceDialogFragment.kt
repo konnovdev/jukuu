@@ -64,6 +64,18 @@ class SentenceDialogFragment() : AppCompatDialogFragment() {
         dialog?.window?.attributes?.windowAnimations = R.style.DialogAnimation
     }
 
+    override fun onStart() {
+        super.onStart()
+        setScreenWidth()
+    }
+
+    private fun setScreenWidth() {
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
+
     private fun initButtons() {
         binding.copyOriginalTextButton.setOnClickListener {
             viewModel.copyOriginalText()
