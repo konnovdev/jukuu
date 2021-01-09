@@ -10,5 +10,5 @@
     <string name="sentence_dialog_fragment_copy_original_text">Copy English text</string>
     <string name="sentence_dialog_fragment_copy_translated_text">Copy Chinese text</string>
     <string name="sentence_dialog_fragment_text_copied_to_clipboard">Text copied to clipboard</string>
-    <string name="sentence_dialog_fragment_what_to_do">What do you want to do with the sentence?</string>
+    <string name="sentence_dialog_fragment_what_to_do">What do you want to do with the&#8239;sentence?</string>
 </resources>
