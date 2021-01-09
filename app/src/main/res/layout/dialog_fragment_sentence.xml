@@ -3,38 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_fragment_sentence_background"
+    android:background="@drawable/dialog_background"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/spacing_32">
 
     <TextView
+        style="?textViewSubHeaderStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/spacing_16"
         android:text="@string/sentence_dialog_fragment_what_to_do"
-        android:textSize="@dimen/font_size_18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_original_text_button"
-        style="@style/FlatButton"
+        style="?flatButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sentence_dialog_fragment_copy_original_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_translated_text_button"
-        style="@style/FlatButton"
+        style="?flatButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sentence_dialog_fragment_copy_translated_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/copy_both_button"
-        style="@style/FlatButton"
+        style="?flatButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sentence_dialog_fragment_copy_both" />
