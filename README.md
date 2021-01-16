@@ -30,4 +30,4 @@ The project is still in its beta phase, with its current state you can use prett
 ------
 **Download**
 
-The apk can be downloaded here: [ilya.tw/jukuu.apk](https://ilya.tw/jukuu.apk)
+You can download it from [Google Play](https://play.google.com/store/apps/details?id=net.chineseguide.jukuu)
