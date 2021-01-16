@@ -1,6 +1,5 @@
 package net.chineseguide.jukuu.data.repository
 
-import androidx.core.net.toUri
 import net.chineseguide.jukuu.data.converter.JukuuHtmlConverter
 import net.chineseguide.jukuu.data.converter.UrlConverter
 import net.chineseguide.jukuu.data.datasource.SentenceRemoteDataSource
@@ -29,7 +28,7 @@ class SentenceRepositoryImpl @Inject constructor(
     private var lastDownloadedPage = 0
 
     override fun get(query: String): SentenceCollection =
-        urlConverter.convert("${query.toUri()}")
+        urlConverter.convert(query)
             .let { remoteDataSource.getFirstPage(query = it) }
             .let(jukuuHtmlConverter::convert)
             .also { lastDownloadedPage = 0 }
@@ -43,7 +42,7 @@ class SentenceRepositoryImpl @Inject constructor(
 
         lastDownloadedPage++
 
-        return urlConverter.convert("${query.toUri()}")
+        return urlConverter.convert(query)
             .let { remoteDataSource.getCustomPage(query = it, page = page) }
             .let(jukuuHtmlConverter::convert)
     }

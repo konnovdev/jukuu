@@ -62,6 +62,8 @@ dependencies {
     implementation(Libraries.crashlytics)
 
     testImplementation(TestLibraries.junit)
+    testImplementation(TestLibraries.mockitoCore)
+    testImplementation(TestLibraries.kotlinMockito)
 }
 
 kapt {

@@ -19,6 +19,8 @@ object Versions {
     const val firebase = "26.2.0"
 
     const val junit = "4.13.1"
+    const val mockito = "3.7.0"
+    const val kotlinMockito = "2.2.0"
 }
 
 object Classpaths {
@@ -56,4 +58,6 @@ object Libraries {
 
 object TestLibraries {
     const val junit = "junit:junit:${Versions.junit}"
+    const val kotlinMockito = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.kotlinMockito}"
+    const val mockitoCore = "org.mockito:mockito-inline:${Versions.mockito}"
 }
