@@ -13,7 +13,9 @@ class JukuuHtmlConverter @Inject constructor() {
     private fun parse(doc: Document): SentenceCollection {
         val sentences = mutableListOf<Sentence>()
 
-        val headword = doc.head().getElementsByAttribute("title")
+        // TODO remove unneeded characters in the header (see JukuuHtmlConverterTest). For now the header is not used anywhere anyway so it's not a problem.
+        val headword = doc.head().getElementsByTag("title")[0]
+
         val englishSentences = doc.body().getElementsByClass("e")
         val chineseSentences = doc.body().getElementsByClass("c")
 
@@ -24,11 +26,13 @@ class JukuuHtmlConverter @Inject constructor() {
                     .html()
                     .removeTags()
                     .removeIndexNumber()
-                    .removeLeadingSpace(),
+                    .removeLeadingSpace()
+                    .removeEndingSpace(),
                 chineseSentences[sentenceId]
                     .html()
                     .removeTags()
                     .removeLeadingSpace()
+                    .removeEndingSpace()
             )
             sentences.add(sentence)
         }
@@ -52,4 +56,6 @@ class JukuuHtmlConverter @Inject constructor() {
     private fun String.removeIndexNumber(): String = this.substringAfter(". ")
 
     private fun String.removeLeadingSpace(): String = this.removePrefix(" ")
+
+    private fun String.removeEndingSpace(): String = this.dropLastWhile { it == ' ' }
 }
