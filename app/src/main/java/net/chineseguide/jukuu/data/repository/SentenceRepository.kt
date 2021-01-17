@@ -3,14 +3,14 @@ package net.chineseguide.jukuu.data.repository
 import net.chineseguide.jukuu.data.converter.JukuuHtmlConverter
 import net.chineseguide.jukuu.data.converter.UrlConverter
 import net.chineseguide.jukuu.data.datasource.SentenceRemoteDataSource
-import net.chineseguide.jukuu.domain.entity.SentenceCollection
+import net.chineseguide.jukuu.domain.entity.Sentence
 import javax.inject.Inject
 
 interface SentenceRepository {
 
-    fun get(query: String): SentenceCollection
+    fun get(query: String): List<Sentence>
 
-    fun getNext(query: String, sentenceIndex: Int): SentenceCollection?
+    fun getNext(query: String, sentenceIndex: Int): List<Sentence>
 }
 
 class SentenceRepositoryImpl @Inject constructor(
@@ -22,22 +22,21 @@ class SentenceRepositoryImpl @Inject constructor(
     private companion object {
         const val JUKUU_SENTENCES_PER_PAGE = 10
         const val JUKUU_PAGES_LIMIT = 10
-        val DOWNLOAD_NOT_NEEDED = null
     }
 
     private var lastDownloadedPage = 0
 
-    override fun get(query: String): SentenceCollection =
+    override fun get(query: String): List<Sentence> =
         urlConverter.convert(query)
             .let { remoteDataSource.getFirstPage(query = it) }
             .let(jukuuHtmlConverter::convert)
             .also { lastDownloadedPage = 0 }
 
-    override fun getNext(query: String, sentenceIndex: Int): SentenceCollection? {
+    override fun getNext(query: String, sentenceIndex: Int): List<Sentence> {
         val page = sentenceIndex / JUKUU_SENTENCES_PER_PAGE
 
         if (page <= lastDownloadedPage || page >= JUKUU_PAGES_LIMIT) {
-            return DOWNLOAD_NOT_NEEDED
+            return listOf()
         }
 
         lastDownloadedPage++

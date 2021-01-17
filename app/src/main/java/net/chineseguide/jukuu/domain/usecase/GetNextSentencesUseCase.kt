@@ -9,5 +9,5 @@ class GetNextSentencesUseCase @Inject constructor(
 ) {
 
     operator fun invoke(query: String, sentenceIndex: Int): List<Sentence> =
-        sentenceRepository.getNext(query, sentenceIndex)?.sentences ?: emptyList()
+        sentenceRepository.getNext(query, sentenceIndex)
 }

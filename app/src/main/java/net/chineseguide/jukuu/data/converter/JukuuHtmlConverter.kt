@@ -1,20 +1,15 @@
 package net.chineseguide.jukuu.data.converter
 
 import net.chineseguide.jukuu.domain.entity.Sentence
-import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import org.jsoup.nodes.Document
-import java.util.*
 import javax.inject.Inject
 
 class JukuuHtmlConverter @Inject constructor() {
 
-    fun convert(doc: Document): SentenceCollection = parse(doc)
+    fun convert(doc: Document): List<Sentence> = parse(doc)
 
-    private fun parse(doc: Document): SentenceCollection {
+    private fun parse(doc: Document): List<Sentence> {
         val sentences = mutableListOf<Sentence>()
-
-        // TODO remove unneeded characters in the header (see JukuuHtmlConverterTest). For now the header is not used anywhere anyway so it's not a problem.
-        val headword = doc.head().getElementsByTag("title")[0]
 
         val englishSentences = doc.body().getElementsByClass("e")
         val chineseSentences = doc.body().getElementsByClass("c")
@@ -36,7 +31,8 @@ class JukuuHtmlConverter @Inject constructor() {
             )
             sentences.add(sentence)
         }
-        return SentenceCollection(UUID.randomUUID().toString(), headword.html(), sentences)
+
+        return sentences
     }
 
     private fun String.removeTags(): String {

@@ -3,6 +3,7 @@ package net.chineseguide.jukuu.ui.home
 import net.chineseguide.jukuu.ui.util.VerticalScrollListener
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -115,7 +116,7 @@ class HomeFragment : Fragment() {
             }
 
             is HomeState.Content -> {
-                showContent(state.sentenceCollection.sentences)
+                showContent(state.sentences)
             }
 
             is HomeState.EmptyResultAfterSearch -> {

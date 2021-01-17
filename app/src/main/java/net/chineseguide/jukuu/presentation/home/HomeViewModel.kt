@@ -5,13 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import net.chineseguide.jukuu.domain.entity.Sentence
-import net.chineseguide.jukuu.domain.entity.SentenceCollection
 import net.chineseguide.jukuu.domain.usecase.GetNextSentencesUseCase
 import net.chineseguide.jukuu.domain.usecase.GetSentenceCollectionUseCase
 import net.chineseguide.jukuu.presentation.ErrorLogger
@@ -34,12 +32,12 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-    private suspend fun showFirstPageLoads(sentenceCollection: SentenceCollection) {
+    private suspend fun showFirstPageLoads(sentences: List<Sentence>) {
         withContext(Main) {
-            if (sentenceCollection.sentences.isEmpty()) {
+            if (sentences.isEmpty()) {
                 _state.value = HomeState.EmptyResultAfterSearch
             } else {
-                _state.value = HomeState.Content(sentenceCollection)
+                _state.value = HomeState.Content(sentences)
             }
         }
     }
@@ -60,11 +58,9 @@ class HomeViewModel @ViewModelInject constructor(
 
     private suspend fun showNextSentencesLoaded(nextSentences: List<Sentence>) {
         withContext(Main) {
-            if (nextSentences.isNotEmpty()) {
-                val contentState = (state.value as HomeState.Content)
-                val currentSentenceCollection = contentState.sentenceCollection
-                currentSentenceCollection.sentences.addAll(nextSentences)
-                _state.value = HomeState.Content(currentSentenceCollection)
+            val currentState = state.value
+            if (nextSentences.isNotEmpty() && currentState is HomeState.Content) {
+                _state.value = HomeState.Content(currentState.sentences + nextSentences)
             }
         }
     }

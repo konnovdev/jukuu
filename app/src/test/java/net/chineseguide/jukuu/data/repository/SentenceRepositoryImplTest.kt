@@ -4,7 +4,7 @@ import com.nhaarman.mockitokotlin2.*
 import net.chineseguide.jukuu.data.converter.JukuuHtmlConverter
 import net.chineseguide.jukuu.data.converter.UrlConverter
 import net.chineseguide.jukuu.data.datasource.SentenceRemoteDataSource
-import net.chineseguide.jukuu.domain.entity.SentenceCollection
+import net.chineseguide.jukuu.domain.entity.Sentence
 import org.jsoup.nodes.Document
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -17,7 +17,6 @@ class SentenceRepositoryImplTest {
     private companion object {
 
         const val JUKUU_SENTENCES_PER_PAGE = 10
-        val DOWNLOAD_NOT_NEEDED = null
     }
 
     private val sentenceRemoteDataSource: SentenceRemoteDataSource = mock()
@@ -35,21 +34,17 @@ class SentenceRepositoryImplTest {
         val document: Document = mock()
         val query = "pet store"
         val encodedQuery = "pet+store"
-        val expectedSentenceCollection = SentenceCollection(
-            "id",
-            "pet store",
-            mutableListOf()
-        )
+        val expectedSentences = listOf<Sentence>()
         whenever(urlConverter.convert(query)).thenReturn(encodedQuery)
         whenever(sentenceRemoteDataSource.getFirstPage(encodedQuery)).thenReturn(document)
-        whenever(jukuuHtmlConverter.convert(document)).thenReturn(expectedSentenceCollection)
+        whenever(jukuuHtmlConverter.convert(document)).thenReturn(expectedSentences)
 
         val result = sentenceRepository.get(query)
 
         verify(urlConverter).convert(query)
         verify(sentenceRemoteDataSource).getFirstPage(encodedQuery)
         verify(jukuuHtmlConverter).convert(document)
-        assertEquals(expectedSentenceCollection, result)
+        assertEquals(expectedSentences, result)
     }
 
     @Test
@@ -57,27 +52,23 @@ class SentenceRepositoryImplTest {
         val document: Document = mock()
         val query = "pet store"
         val encodedQuery = "pet+store"
-        val expectedSentenceCollection = SentenceCollection(
-            "id",
-            "pet store",
-            mutableListOf()
-        )
+        val expectedSentences = listOf<Sentence>()
         val page = 3
         val sentenceIndex = 38
         whenever(urlConverter.convert(query)).thenReturn(encodedQuery)
         whenever(sentenceRemoteDataSource.getCustomPage(encodedQuery, page)).thenReturn(document)
-        whenever(jukuuHtmlConverter.convert(document)).thenReturn(expectedSentenceCollection)
+        whenever(jukuuHtmlConverter.convert(document)).thenReturn(expectedSentences)
 
         val result = sentenceRepository.getNext(query, sentenceIndex)
 
         verify(urlConverter).convert(query)
         verify(sentenceRemoteDataSource).getCustomPage(encodedQuery, page)
         verify(jukuuHtmlConverter).convert(document)
-        assertEquals(expectedSentenceCollection, result)
+        assertEquals(expectedSentences, result)
     }
 
     @Test
-    fun `WHEN get next with sentence index smaller than jukuu sentences per page EXPECT return download not needed`() {
+    fun `WHEN get next with sentence index smaller than jukuu sentences per page EXPECT return empty list`() {
         val query = "pet store"
         val sentenceIndex = JUKUU_SENTENCES_PER_PAGE - 6
 
@@ -86,7 +77,7 @@ class SentenceRepositoryImplTest {
         verify(urlConverter, never()).convert(query)
         verify(sentenceRemoteDataSource, never()).getCustomPage(any(), any())
         verify(jukuuHtmlConverter, never()).convert(any())
-        assertEquals(DOWNLOAD_NOT_NEEDED, result)
+        assertEquals(listOf<Sentence>(), result)
     }
 
     @Test
@@ -95,21 +86,13 @@ class SentenceRepositoryImplTest {
         val document2: Document = mock()
         val query = "pet store"
         val encodedQuery = "pet+store"
-        val expectedSentenceCollection1 = SentenceCollection(
-            "id",
-            "pet store",
-            mutableListOf()
-        )
-        val expectedSentenceCollection2 = SentenceCollection(
-            "id2",
-            "pet store",
-            mutableListOf()
-        )
+        val expectedSentences1 = listOf<Sentence>()
+        val expectedSentences2 = listOf<Sentence>()
         var page = 1
         var sentenceIndex = 10
         whenever(urlConverter.convert(query)).thenReturn(encodedQuery)
         whenever(sentenceRemoteDataSource.getCustomPage(encodedQuery, page)).thenReturn(document1)
-        whenever(jukuuHtmlConverter.convert(document1)).thenReturn(expectedSentenceCollection1)
+        whenever(jukuuHtmlConverter.convert(document1)).thenReturn(expectedSentences1)
 
         val result1 = sentenceRepository.getNext(query, sentenceIndex)
 
@@ -119,7 +102,7 @@ class SentenceRepositoryImplTest {
         page = 2
         sentenceIndex = 20
         whenever(sentenceRemoteDataSource.getCustomPage(encodedQuery, page)).thenReturn(document2)
-        whenever(jukuuHtmlConverter.convert(document2)).thenReturn(expectedSentenceCollection2)
+        whenever(jukuuHtmlConverter.convert(document2)).thenReturn(expectedSentences2)
 
         val result2 = sentenceRepository.getNext(query, sentenceIndex)
 
@@ -128,8 +111,8 @@ class SentenceRepositoryImplTest {
         verify(sentenceRemoteDataSource).getCustomPage(encodedQuery, 2)
         verify(jukuuHtmlConverter).convert(document1)
         verify(jukuuHtmlConverter).convert(document2)
-        assertEquals(expectedSentenceCollection1, result1)
-        assertEquals(expectedSentenceCollection2, result2)
+        assertEquals(expectedSentences1, result1)
+        assertEquals(expectedSentences2, result2)
         verifyNoMoreInteractions(urlConverter, sentenceRemoteDataSource, jukuuHtmlConverter)
     }
 }

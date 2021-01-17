@@ -1,6 +1,6 @@
 package net.chineseguide.jukuu.presentation.home
 
-import net.chineseguide.jukuu.domain.entity.SentenceCollection
+import net.chineseguide.jukuu.domain.entity.Sentence
 
 sealed class HomeState {
 
@@ -8,7 +8,7 @@ sealed class HomeState {
 
     object Progress : HomeState()
 
-    class Content(val sentenceCollection: SentenceCollection) : HomeState()
+    class Content(val sentences: List<Sentence>) : HomeState()
 
     object EmptyResultAfterSearch : HomeState()
 

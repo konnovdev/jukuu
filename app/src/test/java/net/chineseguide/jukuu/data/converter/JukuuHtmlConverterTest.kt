@@ -21,10 +21,10 @@ class JukuuHtmlConverterTest {
 
         val result = jukuuHtmlConverter.convert(getMockedDocument())
 
-        assertEquals(englishSentence1, result.sentences[0].originalSentence)
-        assertEquals(englishSentence2, result.sentences[1].originalSentence)
-        assertEquals(chineseSentence1, result.sentences[0].translatedSentence)
-        assertEquals(chineseSentence2, result.sentences[1].translatedSentence)
+        assertEquals(englishSentence1, result[0].originalSentence)
+        assertEquals(englishSentence2, result[1].originalSentence)
+        assertEquals(chineseSentence1, result[0].translatedSentence)
+        assertEquals(chineseSentence2, result[1].translatedSentence)
     }
 
     private fun getMockedDocument(): Document {
