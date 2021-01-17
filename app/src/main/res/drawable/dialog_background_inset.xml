@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
     android:drawable="@drawable/dialog_background_drawable"
-    android:insetRight="@dimen/spacing_24"
-    android:insetLeft="@dimen/spacing_24">
-</inset>
+    android:insetLeft="@dimen/spacing_24"
+    android:insetRight="@dimen/spacing_24"></inset>

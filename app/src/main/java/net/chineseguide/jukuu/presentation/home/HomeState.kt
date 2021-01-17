@@ -12,5 +12,5 @@ sealed class HomeState {
 
     object EmptyResultAfterSearch : HomeState()
 
-    object Error: HomeState()
+    object Error : HomeState()
 }

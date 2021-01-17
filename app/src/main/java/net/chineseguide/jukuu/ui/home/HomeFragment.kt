@@ -1,9 +1,7 @@
 package net.chineseguide.jukuu.ui.home
 
-import net.chineseguide.jukuu.ui.util.VerticalScrollListener
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -18,6 +16,7 @@ import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.presentation.home.HomeState
 import net.chineseguide.jukuu.presentation.home.HomeViewModel
 import net.chineseguide.jukuu.ui.home.sentence.dialog.SentenceDialogFragment
+import net.chineseguide.jukuu.ui.util.VerticalScrollListener
 import net.chineseguide.jukuu.ui.util.observeSafe
 import net.chineseguide.jukuu.ui.util.setOnQuerySubmittedListener
 

@@ -27,7 +27,7 @@ var Bundle.sentence: Sentence
     set(value) = putSerializable("sentence_arg", value)
 
 @AndroidEntryPoint
-class SentenceDialogFragment() : AppCompatDialogFragment() {
+class SentenceDialogFragment : AppCompatDialogFragment() {
 
     private val viewModel: SentencesViewModel by viewModels()
 

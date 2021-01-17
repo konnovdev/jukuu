@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import net.chineseguide.jukuu.domain.entity.Sentence
-import java.lang.IllegalArgumentException
 
 class SentencesViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle

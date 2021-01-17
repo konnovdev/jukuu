@@ -1,11 +1,11 @@
 package net.chineseguide.jukuu.data.converter
 
-import org.junit.Assert.assertEquals
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class JukuuHtmlConverterTest {
@@ -15,7 +15,8 @@ class JukuuHtmlConverterTest {
     @Test
     fun convertDocumentToSentences() {
         val englishSentence1 = "When to test: Summative and formative evaluations"
-        val englishSentence2 = "Finally, personas and scenarios are used to test the validity of design ideas and assumptions throughout the process."
+        val englishSentence2 =
+            "Finally, personas and scenarios are used to test the validity of design ideas and assumptions throughout the process."
         val chineseSentence1 = "测试的时机为总结式和进展式评估"
         val chineseSentence2 = "最后，人物角色和场景剧本被用来在整个过程中测试设计思想和设计猜想的有效性。"
 
