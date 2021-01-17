@@ -45,7 +45,7 @@ class HomeViewModel @ViewModelInject constructor(
     private suspend fun showQueryError(error: Throwable) {
         withContext(Main) {
             errorLogger.log(error)
-            _state.value = HomeState.Error(error)
+            _state.value = HomeState.Error
         }
     }
 

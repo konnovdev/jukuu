@@ -12,5 +12,5 @@ sealed class HomeState {
 
     object EmptyResultAfterSearch : HomeState()
 
-    class Error(val exception: Throwable) : HomeState()
+    object Error: HomeState()
 }
