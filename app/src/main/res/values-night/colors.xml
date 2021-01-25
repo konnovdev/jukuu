@@ -6,4 +6,5 @@
     <color name="textColorPrimary">@android:color/white</color>
     <color name="dialogBackgroundColor">#203039</color>
     <color name="colorButtonClicked">@color/colorAccent</color>
+    <color name="colorDrawerItemSelected">#560027</color>
 </resources>

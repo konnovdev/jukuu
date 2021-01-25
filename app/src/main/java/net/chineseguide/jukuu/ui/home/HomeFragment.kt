@@ -1,9 +1,8 @@
 package net.chineseguide.jukuu.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -20,6 +19,7 @@ import net.chineseguide.jukuu.ui.util.VerticalScrollListener
 import net.chineseguide.jukuu.ui.util.observeSafe
 import net.chineseguide.jukuu.ui.util.setOnQuerySubmittedListener
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -32,6 +32,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
+    private lateinit var searchView: SearchView
+
     private lateinit var sentencesAdapter: SentencesAdapter
 
     override fun onCreateView(
@@ -40,18 +42,28 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
+        setHasOptionsMenu(true)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initViews()
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        searchView = inflateSearchView(menu, inflater)
+        setUpAdapter()
         observeState()
     }
 
-    private fun initViews() {
-        setUpAdapter()
-        setUpSearchBar()
+    private fun inflateSearchView(menu: Menu, inflater: MenuInflater): SearchView {
+        inflater.inflate(R.menu.home_menu, menu)
+        searchView = menu.findItem(R.id.action_search).actionView as SearchView
+        searchView.maxWidth = Integer.MAX_VALUE
+        with(searchView) {
+            setOnQuerySubmittedListener(viewModel::search)
+            setIconifiedByDefault(false)
+            queryHint = getString(R.string.home_fragment_search)
+        }
+
+        return searchView
     }
 
     private fun setUpAdapter() {
@@ -75,7 +87,7 @@ class HomeFragment : Fragment() {
                         visibleItemCount + firstVisibleItemPosition >= totalItemCount - 4
 
                     if (nearTheEndOfTheList) {
-                        viewModel.listScrolled(binding.searchBar.query.toString(), totalItemCount)
+                        viewModel.listScrolled(searchView.query.toString(), totalItemCount)
                     }
                 }
             })
@@ -91,13 +103,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUpSearchBar() {
-        with(binding.searchBar) {
-            setOnQuerySubmittedListener(viewModel::search)
-            setIconifiedByDefault(false)
-        }
-    }
-
     private fun observeState() {
         viewModel.state.observeSafe(viewLifecycleOwner, ::renderState)
     }
@@ -105,7 +110,7 @@ class HomeFragment : Fragment() {
     private fun renderState(state: HomeState) {
         when (state) {
             is HomeState.EmptyNoSearch -> {
-                binding.searchBar.requestFocus()
+                searchView.requestFocus()
                 binding.emptyContentStub.isVisible = true
                 binding.emptyContentStub.setText(R.string.home_fragment_perform_search_hint)
             }
@@ -133,7 +138,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showInProgress() {
-        binding.searchBar.isEnabled = false
+        searchView.isEnabled = false
         binding.emptyContentStub.isVisible = false
         binding.sentencesRecyclerView.alpha = SLIGHTLY_VISIBLE
         binding.progressBar.isVisible = true
@@ -141,7 +146,7 @@ class HomeFragment : Fragment() {
 
     private fun showContent(sentences: List<Sentence>) {
         binding.sentencesRecyclerView.alpha = COMPLETELY_VISIBLE
-        binding.searchBar.isEnabled = true
+        searchView.isEnabled = true
         binding.progressBar.isVisible = false
         sentencesAdapter.setItemList(sentences)
     }
