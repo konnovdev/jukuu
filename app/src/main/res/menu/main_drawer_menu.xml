@@ -8,12 +8,9 @@
             android:title="@string/main_fragment_menu_home" />
         <item
             android:id="@+id/nav_settings"
+            android:menuCategory="secondary"
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/main_fragment_menu_settings" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@android:drawable/ic_menu_agenda"
-            android:title="@string/main_fragment_menu_about" />
     </group>
 
 </menu>

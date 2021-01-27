@@ -7,9 +7,17 @@
     <string name="home_fragment_perform_search_hint">Для поиска введите свой запрос в поисковую строку (на английском или китайском) и нажмите Enter</string>
     <string name="home_fragment_search">Поиск</string>
 
+    <string name="main_fragment_drawer_accessibility_action_open">Открыть</string>
+    <string name="main_fragment_drawer_accessibility_action_close">Закрыть</string>
+    <string name="main_fragment_menu_home">Домой</string>
+    <string name="main_fragment_menu_settings">Настройки</string>
+
     <string name="sentence_dialog_fragment_copy_both">Скопировать оба</string>
     <string name="sentence_dialog_fragment_copy_original_text">Скопировать английский текст</string>
     <string name="sentence_dialog_fragment_copy_translated_text">Скопировать китайский текст</string>
     <string name="sentence_dialog_fragment_text_copied_to_clipboard">Текст скопирован в буфер обмена</string>
     <string name="sentence_dialog_fragment_what_to_do">Что вы хотите сделать с предложением?</string>
+
+    <string name="settings_fragment_language_item">Язык</string>
+    <string name="settings_fragment_night_theme_item">Ночная тема</string>
 </resources>

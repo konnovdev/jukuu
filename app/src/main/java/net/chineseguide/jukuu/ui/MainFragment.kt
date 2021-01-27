@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.FragmentMainBinding
@@ -30,17 +31,33 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO open other fragments on click
-//        binding.mainNavigationView.setNavigationItemSelectedListener{
-//            when (it.itemId) {
-//                R.id.nav_home -> {
-//                    true
-//                }
-//            }
-//            true
-//        }
-
         val activity = activity as AppCompatActivity
+
+        binding.mainNavigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> {
+                    // TODO create a router and handle all the navigation on the presentation layer
+                    val navController =
+                        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+                    if (navController.currentDestination?.id != R.id.homeFragment) {
+                        navController.navigate(R.id.homeFragment)
+                    }
+                    binding.mainDrawerLayout.closeDrawers()
+                }
+                R.id.nav_settings -> {
+                    val navController =
+                        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+                    if (navController.currentDestination?.id != R.id.settingsFragment) {
+                        navController.navigate(R.id.settingsFragment)
+                    }
+                    binding.mainDrawerLayout.closeDrawers()
+                }
+            }
+            true
+        }
+
+        binding.mainNavigationView.menu.getItem(0).isChecked = true;
+
         activity.setSupportActionBar(binding.toolbar)
         activity.supportActionBar?.title = ""
 

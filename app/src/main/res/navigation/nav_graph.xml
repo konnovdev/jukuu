@@ -10,4 +10,10 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="net.chineseguide.jukuu.ui.settings.SettingsFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+
 </navigation>
