@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.FragmentMainBinding
+import net.chineseguide.jukuu.ui.util.extensions.addBackPressedListener
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -30,9 +31,31 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpToolbar()
+        setUpDrawer()
 
+        // TODO create a router and handle all the navigation on the presentation layer
+        addBackPressedListener {
+            val navController =
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+
+            if (navController.previousBackStackEntry?.destination?.id == R.id.homeFragment) {
+                navController.popBackStack()
+                binding.mainNavigationView.menu.getItem(0).isChecked = true;
+            } else {
+                this.isEnabled = false
+                activity?.onBackPressed()
+            }
+        }
+    }
+
+    private fun setUpToolbar() {
         val activity = activity as AppCompatActivity
+        activity.setSupportActionBar(binding.toolbar)
+        activity.supportActionBar?.title = ""
+    }
 
+    private fun setUpDrawer() {
         binding.mainNavigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
@@ -58,8 +81,11 @@ class MainFragment : Fragment() {
 
         binding.mainNavigationView.menu.getItem(0).isChecked = true;
 
-        activity.setSupportActionBar(binding.toolbar)
-        activity.supportActionBar?.title = ""
+        hideKeyboardOnDrawerOpened()
+    }
+
+    private fun hideKeyboardOnDrawerOpened() {
+        val activity = activity ?: return
 
         val drawerToggle = object : ActionBarDrawerToggle(
             activity,
@@ -75,7 +101,6 @@ class MainFragment : Fragment() {
                 inputManager.hideSoftInputFromWindow(activity.currentFocus?.windowToken, 0)
             }
         }
-
         binding.mainDrawerLayout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
     }
