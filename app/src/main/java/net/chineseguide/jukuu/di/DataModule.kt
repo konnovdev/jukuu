@@ -8,8 +8,8 @@ import net.chineseguide.jukuu.data.api.SentenceApi
 import net.chineseguide.jukuu.data.api.SentenceApiImpl
 import net.chineseguide.jukuu.data.datasource.SentenceRemoteDataSource
 import net.chineseguide.jukuu.data.datasource.SentenceRemoteDataSourceImpl
-import net.chineseguide.jukuu.data.repository.SentenceRepository
 import net.chineseguide.jukuu.data.repository.SentenceRepositoryImpl
+import net.chineseguide.jukuu.domain.repository.SentenceRepository
 import javax.inject.Singleton
 
 @Module

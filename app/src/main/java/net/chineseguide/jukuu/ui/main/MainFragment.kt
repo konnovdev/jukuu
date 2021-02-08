@@ -1,4 +1,4 @@
-package net.chineseguide.jukuu.ui
+package net.chineseguide.jukuu.ui.main
 
 import android.content.Context
 import android.os.Bundle

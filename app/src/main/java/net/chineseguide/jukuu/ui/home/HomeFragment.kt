@@ -16,8 +16,8 @@ import net.chineseguide.jukuu.presentation.home.HomeState
 import net.chineseguide.jukuu.presentation.home.HomeViewModel
 import net.chineseguide.jukuu.ui.home.sentence.dialog.SentenceDialogFragment
 import net.chineseguide.jukuu.ui.util.VerticalScrollListener
-import net.chineseguide.jukuu.ui.util.observeSafe
-import net.chineseguide.jukuu.ui.util.setOnQuerySubmittedListener
+import net.chineseguide.jukuu.ui.util.extensions.observeSafe
+import net.chineseguide.jukuu.ui.util.extensions.setOnQuerySubmittedListener
 
 
 @AndroidEntryPoint

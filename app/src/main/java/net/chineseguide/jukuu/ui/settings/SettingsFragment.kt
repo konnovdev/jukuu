@@ -13,11 +13,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.FragmentSettingsBinding
 import net.chineseguide.jukuu.domain.entity.AppLocale
-import net.chineseguide.jukuu.ui.LocaleManager
-import net.chineseguide.jukuu.ui.ThemeManager
-import net.chineseguide.jukuu.ui.util.getLocale
-import net.chineseguide.jukuu.ui.util.setOnItemSelectedListener
-import net.chineseguide.jukuu.ui.util.toAppLocale
+import net.chineseguide.jukuu.ui.util.config.LocaleManager
+import net.chineseguide.jukuu.ui.util.config.ThemeManager
+import net.chineseguide.jukuu.ui.util.extensions.getLocale
+import net.chineseguide.jukuu.ui.util.extensions.setOnItemSelectedListener
+import net.chineseguide.jukuu.ui.util.extensions.toAppLocale
 
 // TODO move all the logic and navigation to the presentation layer
 @AndroidEntryPoint

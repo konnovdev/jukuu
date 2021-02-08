@@ -1,4 +1,4 @@
-package net.chineseguide.jukuu.ui
+package net.chineseguide.jukuu.ui.util.config
 
 import android.content.Context
 import android.content.res.Configuration
@@ -28,7 +28,12 @@ object ThemeManager {
     private fun getNightThemeOn(context: Context): Boolean =
         context
             .getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
-            .getBoolean(KEY_NIGHT_THEME_ON, isNightThemeOnByTheSystem(context))
+            .getBoolean(
+                KEY_NIGHT_THEME_ON,
+                isNightThemeOnByTheSystem(
+                    context
+                )
+            )
 
     private fun isNightThemeOnByTheSystem(context: Context) =
         context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK ==

@@ -1,8 +1,8 @@
-package net.chineseguide.jukuu.ui
+package net.chineseguide.jukuu.ui.util.config
 
 import android.content.Context
 import android.content.res.Configuration
-import net.chineseguide.jukuu.ui.util.getLocale
+import net.chineseguide.jukuu.ui.util.extensions.getLocale
 import java.util.*
 
 object LocaleManager {
@@ -12,7 +12,8 @@ object LocaleManager {
 
     fun createLanguageConfiguration(context: Context): Context {
         val config = Configuration(context.resources.configuration)
-        val localeSet = getLocale(context)
+        val localeSet =
+            getLocale(context)
         config.setLocale(Locale(localeSet.last(), localeSet.first()))
 
         return context.createConfigurationContext(config)

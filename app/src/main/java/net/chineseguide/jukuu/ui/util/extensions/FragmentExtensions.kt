@@ -1,4 +1,4 @@
-package net.chineseguide.jukuu.ui.util
+package net.chineseguide.jukuu.ui.util.extensions
 
 import android.widget.Toast
 import androidx.annotation.StringRes
