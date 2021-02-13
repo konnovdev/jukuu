@@ -9,14 +9,17 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import net.chineseguide.jukuu.R
 import net.chineseguide.jukuu.databinding.FragmentMainBinding
+import net.chineseguide.jukuu.presentation.main.MainViewModel
 import net.chineseguide.jukuu.ui.util.extensions.addBackPressedListener
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
+
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var binding: FragmentMainBinding
 
@@ -34,18 +37,10 @@ class MainFragment : Fragment() {
         setUpToolbar()
         setUpDrawer()
 
-        // TODO create a router and handle all the navigation on the presentation layer
         addBackPressedListener {
-            val navController =
-                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-
-            if (navController.previousBackStackEntry?.destination?.id == R.id.homeFragment) {
-                navController.popBackStack()
-                binding.mainNavigationView.menu.getItem(0).isChecked = true;
-            } else {
-                this.isEnabled = false
-                activity?.onBackPressed()
-            }
+            mainViewModel.back()
+            //temporary solution to make previous menu checked when navigating back, TODO come up with a better solution
+            binding.mainNavigationView.menu.getItem(0).isChecked = true;
         }
     }
 
@@ -59,20 +54,11 @@ class MainFragment : Fragment() {
         binding.mainNavigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
-                    // TODO create a router and handle all the navigation on the presentation layer
-                    val navController =
-                        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-                    if (navController.currentDestination?.id != R.id.homeFragment) {
-                        navController.navigate(R.id.homeFragment)
-                    }
+                    mainViewModel.openHomeScreen()
                     binding.mainDrawerLayout.closeDrawers()
                 }
                 R.id.nav_settings -> {
-                    val navController =
-                        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-                    if (navController.currentDestination?.id != R.id.settingsFragment) {
-                        navController.navigate(R.id.settingsFragment)
-                    }
+                    mainViewModel.openSettingsScreen()
                     binding.mainDrawerLayout.closeDrawers()
                 }
             }
