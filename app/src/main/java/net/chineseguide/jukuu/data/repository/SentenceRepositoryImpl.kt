@@ -4,14 +4,8 @@ import net.chineseguide.jukuu.data.converter.JukuuHtmlConverter
 import net.chineseguide.jukuu.data.converter.UrlConverter
 import net.chineseguide.jukuu.data.datasource.SentenceRemoteDataSource
 import net.chineseguide.jukuu.domain.entity.Sentence
+import net.chineseguide.jukuu.domain.repository.SentenceRepository
 import javax.inject.Inject
-
-interface SentenceRepository {
-
-    fun get(query: String): List<Sentence>
-
-    fun getNext(query: String, sentenceIndex: Int): List<Sentence>
-}
 
 class SentenceRepositoryImpl @Inject constructor(
     private val remoteDataSource: SentenceRemoteDataSource,

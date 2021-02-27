@@ -8,8 +8,12 @@
         android:id="@+id/homeFragment"
         android:name="net.chineseguide.jukuu.ui.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_home" />
 
-    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="net.chineseguide.jukuu.ui.settings.SettingsFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

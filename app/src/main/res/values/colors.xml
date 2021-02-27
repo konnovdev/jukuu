@@ -6,6 +6,7 @@
     <color name="textColorPrimary">@android:color/black</color>
     <color name="dialogBackgroundColor">@android:color/white</color>
     <color name="colorButtonClicked">@color/colorPrimaryDark</color>
+    <color name="colorDrawerItemSelected">#f8bbd0</color>
 
     <color name="ic_launcher_background">@android:color/white</color>
 </resources>

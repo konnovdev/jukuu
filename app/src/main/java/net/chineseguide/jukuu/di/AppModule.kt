@@ -1,6 +1,7 @@
 package net.chineseguide.jukuu.di
 
 import android.content.Context
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,9 +12,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-object AppModule {
+interface AppModule {
 
-    @Singleton
-    @Provides
-    fun provideApplication(@ApplicationContext app: Context): App = app as App
+    companion object {
+
+        @Singleton
+        @Provides
+        fun provideApplication(@ApplicationContext app: Context): App = app as App
+    }
 }

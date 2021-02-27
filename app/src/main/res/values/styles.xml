@@ -8,6 +8,9 @@
         <item name="flatButtonStyle">@style/FlatButton</item>
         <item name="textViewHeaderStyle">@style/TextViewHeader</item>
         <item name="textViewSubHeaderStyle">@style/TextViewSubHeader</item>
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
+        <item name="navigationViewStyle">@style/NavigationViewStyle</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
     <style name="FlatButton" parent="Widget.MaterialComponents.Button.TextButton">
@@ -24,8 +27,26 @@
         <item name="android:textSize">@dimen/font_size_18</item>
     </style>
 
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
+        <item name="searchIcon">@null</item>
+        <item name="queryBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="NavigationViewStyle" parent="Widget.Design.NavigationView" >
+        <item name="itemBackground">@drawable/drawer_item_background</item>
+        <item name="itemIconTint">@color/textColorPrimary</item>
+        <item name="itemTextColor">@color/textColorPrimary</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
         <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 </resources>

@@ -1,7 +1,5 @@
 package net.chineseguide.jukuu.ui
 
-import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import net.chineseguide.jukuu.ui.base.BaseApp
 
-@HiltAndroidApp
-class App : Application()
+class App : BaseApp()

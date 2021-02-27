@@ -7,9 +7,17 @@
     <string name="home_fragment_perform_search_hint">在搜尋欄位輸入您的查詢然後按確認鍵以執行搜尋</string>
     <string name="home_fragment_search">搜尋</string>
 
+    <string name="main_fragment_drawer_accessibility_action_open">開啟</string>
+    <string name="main_fragment_drawer_accessibility_action_close">關閉</string>
+    <string name="main_fragment_menu_home">首頁</string>
+    <string name="main_fragment_menu_settings">設定</string>
+
     <string name="sentence_dialog_fragment_copy_both">複製兩者</string>
     <string name="sentence_dialog_fragment_copy_original_text">複製英文句子</string>
     <string name="sentence_dialog_fragment_copy_translated_text">複製中文句子</string>
     <string name="sentence_dialog_fragment_text_copied_to_clipboard">已複製到剪貼簿</string>
     <string name="sentence_dialog_fragment_what_to_do">您要如何處理句子？</string>
+
+    <string name="settings_fragment_language_item">語言</string>
+    <string name="settings_fragment_night_theme_item">深色主題</string>
 </resources>

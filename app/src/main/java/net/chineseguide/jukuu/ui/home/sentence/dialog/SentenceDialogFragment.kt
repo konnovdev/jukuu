@@ -19,8 +19,8 @@ import net.chineseguide.jukuu.databinding.DialogFragmentSentenceBinding
 import net.chineseguide.jukuu.domain.entity.Sentence
 import net.chineseguide.jukuu.presentation.home.sentence.dialog.SentencesViewModel
 import net.chineseguide.jukuu.ui.util.bundleOf
-import net.chineseguide.jukuu.ui.util.observeSafe
-import net.chineseguide.jukuu.ui.util.showLongToast
+import net.chineseguide.jukuu.ui.util.extensions.observeSafe
+import net.chineseguide.jukuu.ui.util.extensions.showLongToast
 
 var Bundle.sentence: Sentence
     get() = getSerializable("sentence_arg") as Sentence

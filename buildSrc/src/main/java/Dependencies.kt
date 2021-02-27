@@ -6,7 +6,7 @@ object Versions {
 
     const val jsoup = "1.13.1"
 
-    const val appCompat = "1.1.0"
+    const val appCompat = "1.2.0"
     const val material = "1.1.0"
     const val constraintLayout = "1.1.3"
     const val coordinatorLayout = "1.1.0"
